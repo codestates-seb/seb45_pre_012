@@ -1,10 +1,10 @@
- .footer {
+.footer {
     padding: 30px 0;
     width: 100%;
     background-color: #232629;
     font-size: 11px;
-    position: absolute;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
   }
 
   .img{
@@ -43,10 +43,9 @@
   }
 
   .footer_bottom {
-    position: absolute;
-    bottom: 0;
+    margin-top: 160px;
     margin-bottom: 45px;
-    margin-right: 100px;
+    margin-right: 10px;
     text-align: left;
     font-size: 11px;
     color: #989da1;
