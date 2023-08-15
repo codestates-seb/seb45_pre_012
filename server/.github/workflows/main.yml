@@ -23,6 +23,6 @@ jobs:
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
-          docker build -t spring-cicd . 
-          docker tag spring-cicd newbee9507/pre-pro:${GITHUB_SHA::7}
+          docker build -t pre-pro . 
+          docker tag pre-pro newbee9507/pre-pro:${GITHUB_SHA::7}
           docker push newbee9507/pre-pro:${GITHUB_SHA::7}
