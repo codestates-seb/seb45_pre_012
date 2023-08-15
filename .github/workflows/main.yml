@@ -22,10 +22,17 @@ jobs:
         whit:
           node-version: '16'
 
+      - name: Navigate to Server Directory
+        run: cd server
+
       - name: Grant execute permission for gradlew
-        run: chmod +x /server/./gradlew
+        run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Navigate back to Repository Root
+        run: cd ..
+
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
