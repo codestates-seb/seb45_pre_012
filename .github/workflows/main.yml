@@ -22,13 +22,13 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Grant execute permission for gradlew
+      - name: Build with Gradle
         run: |
           cd server
           chmod +x gradlew
-         ./gradlew build
-          cd..
-        
+          ./gradlew build
+          cd server
+
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_PASSWORD }}
