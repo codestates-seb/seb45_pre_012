@@ -22,16 +22,13 @@ jobs:
         whit:
           node-version: '16'
 
-      - name: Navigate to Server Directory
-        run: cd server
-
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        working-directory: seb45_pre_012/server
+        
       - name: Build with Gradle
         run: ./gradlew build
-
-      - name: Navigate back to Repository Root
-        run: cd ..
+        working-directory: seb45_pre_012/server
 
       - name: Docker build
         run: |
