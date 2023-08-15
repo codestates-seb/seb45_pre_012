@@ -27,7 +27,7 @@ jobs:
           cd server
           chmod +x gradlew
           ./gradlew build
-          cd server
+          cd ..
 
       - name: Docker build
         run: |
