@@ -44,4 +44,9 @@ public class QuestionServiceImpl implements QuestionService {
                 })
                 .orElseThrow();
     }
+
+    @Override
+    public void deleteQuestion(Long questionId) {
+
+    }
 }

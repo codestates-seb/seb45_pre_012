@@ -115,7 +115,7 @@ public class QuestionControllerTest {
         Long questionId = 1L;
 
         QuestionPatchDTO patchDTO = new QuestionPatchDTO();
-        patchDTO.setTitle("Updated Title");
+        patchDTO.setContent("Updated Title");
         patchDTO.setContent("Updated Content");
 
         Question originalQuestion = new Question();
@@ -138,6 +138,18 @@ public class QuestionControllerTest {
                 .andExpect(status().isCreated());
     }
 
+    @Test
+    void deleteQuestionTest() throws Exception {
+        // Given
+        Long questionId = 1L;
+
+        doNothing().when(questionService).deleteQuestion(questionId);
+
+        // When & Then
+        mockMvc.perform(delete("/questions/{question_id}", questionId))
+                .andExpect(status().isNoContent());
+        verify(questionService, times(1)).deleteQuestion(questionId);
+    }
 
     private String asJsonString(Object obj) throws Exception {
         return objectMapper.writeValueAsString(obj);

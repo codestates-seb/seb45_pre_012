@@ -57,4 +57,11 @@ public class QuestionController {
         URI location = UriCreator.createUri("/questions", question.getQuestionId());
         return ResponseEntity.created(location).build();
     }
+
+    // 질문 삭제
+    @DeleteMapping("/{question_id}")
+    public ResponseEntity deleteQuestion(@PathVariable("question_id") @Positive Long questionId){
+        questionService.deleteQuestion(questionId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 }
