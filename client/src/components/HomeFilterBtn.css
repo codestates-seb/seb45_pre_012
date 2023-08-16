@@ -2,8 +2,12 @@
   margin-left: 1200px;
 }
 .p2_homefilterbtn{
-  padding: 10px 30px;
+  padding: 8px 20px;
   border: 1px solid gray;
   background-color: white;
   color: black;
+}
+.p2_homefilterbtn_selected{
+  background-color: black;
+  color:white;
 }

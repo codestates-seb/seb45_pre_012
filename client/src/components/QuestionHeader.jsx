@@ -1,8 +1,36 @@
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import './QuestionHeader.css';
-import HomeBtn from './HomeBtn.jsx';
+import HomeFilterBtn from './HomeFilterBtn.jsx';
+import { useState } from 'react';
 
 const QuestionHeader = () => {
+  const [homeFilter, setHomeFilter] = useState(0);
+  const cardContents = [
+    {
+      id: 'cardContents1',
+      content:
+        'Export sheets to new file causes formula REF error back to original file',
+    },
+    {
+      id: 'cardContents2',
+      content:
+        ' Export sheets to new file causes formula REF error back to original file2',
+    },
+    {
+      id: 'cardContents3',
+      content:
+        ' Export sheets to new file causes formula REF error back to original file3',
+    },
+    {
+      id: 'cardContents4',
+      content:
+        ' Export sheets to new file causes formula REF error back to original file4',
+    },
+  ];
+  const HomeFilterBtnClick = (idx) => {
+    setHomeFilter(idx);
+  };
+
   return (
     <>
       <Row className="d-flex align-items-center justify-content-center mt-5">
@@ -10,8 +38,7 @@ const QuestionHeader = () => {
           <Card>
             <Card.Body className="d-flex flex-column">
               <Card.Title className="text_lg d-flex">
-                Export sheets to new file causes formula REF error back to
-                original file
+                {cardContents[homeFilter].content}
                 <Button variant="primary ml_5_btn" size="lg">
                   Ask Question
                 </Button>
@@ -25,7 +52,11 @@ const QuestionHeader = () => {
           </Card>
         </Col>
       </Row>
-      <HomeBtn />
+      <HomeFilterBtn
+        homeFilter={homeFilter}
+        setHomeFilter={setHomeFilter}
+        HomeFilterBtnClick={HomeFilterBtnClick}
+      />
     </>
   );
 };
