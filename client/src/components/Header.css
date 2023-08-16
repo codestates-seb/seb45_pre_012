@@ -2,6 +2,7 @@
   /* 가운데 정렬 */
   text-align: center;
   justify-content: center;
+  align-items: center; 
 
   /* border 속성 */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) ;
@@ -25,9 +26,18 @@
 
 /* a: Nav.Link 컴포넌트 패딩 지정  & 안에 요소를 수직 가운데 정렬*/
 .header_container .nav-link{
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem;
   display: flex;
   align-items: center; 
+}
+
+.header_container .btn-light{
+  background-color: #fff;
+  border-color: #fff;
+  border: 0;
+  border-radius: 50px;
+  padding: 0.25rem 0.3rem;
+  margin: 0.25rem; 
 }
 
 .serch-container{
@@ -35,10 +45,10 @@
   align-items: center; 
 }
 
-a.products{
+.products{
  position: relative;
 }
-a.help{
+.help{
   position: relative;
  }
 
@@ -49,6 +59,7 @@ a.help{
   font-size: 13px;
   border-color: #fff;
   border-radius: 50px;
+  margin: 0.25rem;
 }
 
 /* products 버튼에 마우스 hover하는 경우 */
@@ -141,4 +152,42 @@ a.help{
 .header_container .material-symbols-outlined:hover {
   font-size: 1.5rem;
   color: #000
+}
+
+.hamburger_container {
+  position: relative;
+}
+.hamburger_container .sidemenu-container{
+  background-color: #fff;
+  z-index: 1;
+  margin-top: 3px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);;
+  position: absolute;
+  top : 40px;
+  right : -60px;
+}
+
+
+/* 햄버거 아이콘 사이즈 지정 */
+.hamburger_container .sidemenu-container .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+/* 아이콘 span으로 들어와서 이 span 수직 중앙 정렬되도록 */
+.hamburger_container .sidemenu-container span:not(:first) {
+  display: table-cell;
+  padding-right: 3px;
+  text-align: left;
+  vertical-align: middle;
+}
+.hamburger_container .sidemenu-container span.color_ef8236 {
+  color:#ef8236
+}
+
+/* 선택된 a즉 Nav.Link 컴포넌트 스타일 */
+.hamburger_container .sidemenu-container .nav_container a.active{
+  color: rgba(0, 0, 0);
+  background-color:rgba(0, 0, 0, 0.1);
+  border-right:2px solid #ef8236;
+  font-weight: bold;
 }

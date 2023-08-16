@@ -7,12 +7,15 @@ import Footer from './components/Footer.jsx';
 
 import SideMenu from './components/SideMenu';
 import Header from './components/Header';
+
 function App() {
   return (
     <div>
       <div className="App"> hello</div>
-      <Header />
+      <Header isHamburger={true} />
+      <Header isHamburger={false} />
       <SideMenu selected={'Home'}></SideMenu>
+
       <Footer />
     </div>
   );

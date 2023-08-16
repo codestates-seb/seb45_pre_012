@@ -9,8 +9,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import './Header.css';
 import { useState, useRef, useEffect } from 'react';
+import SideMenu from './SideMenu.jsx';
 
-//  ProductModal, HelpModal 클릭 이벤트가 무시되는.. 현상이 발생합니다. (카드 컴포넌트 제작 후 다시 살펴 볼게요..!)
 function ProductModal(props) {
   // eslint-disable-next-line prettier/prettier
   const modalRef = useRef(null)
@@ -23,7 +23,7 @@ function ProductModal(props) {
         !modalRef.current.contains(e.target) &&
         // products 버튼 눌렀을 때 이중으로 상태가 바뀌는 부분 해결
         e.currentTarget !== props.btnRef &&
-        e.target.className !== 'nav-link' // 또는 실제 클래스 이름
+        e.target.className !== props.btnRef.className
       ) {
         props.setIsProductClicked(false);
       }
@@ -111,7 +111,7 @@ function HelpModal(props) {
         modalRef.current &&
         !modalRef.current.contains(e.target) &&
         // products 버튼 눌렀을 때 이중으로 상태가 바뀌는 부분 해결
-        e.target !== props.helpRef
+        e.target.className !== props.helpRef.className
       ) {
         props.setIsHelpClicked(false);
       }
@@ -175,25 +175,34 @@ function HelpModal(props) {
   );
 }
 
-function Header() {
+function Header(props) {
   // product 모달
   const [isProductClicked, setIsProductClicked] = useState(false);
   //help 모달
   const [isHelpClicked, setIsHelpClicked] = useState(false);
+  //햄버거 버튼 모달
+  const [isHamburgerClicked, setIsHamburgerClicked] = useState(false);
+
   //search input에 작성한 내용
   const [searchText, setSearchText] = useState('');
 
+  //모달이 생기는 버튼을 위한 ref
   const productsModalRef = useRef(null);
   const helpModalRef = useRef(null);
+  const siedMenuModalRef = useRef(null);
 
+  //모달버튼 클릭 이벤트 핸들러
   function productClickHandler() {
     setIsProductClicked(!isProductClicked);
   }
   function helpClickHandler() {
     setIsHelpClicked(!isHelpClicked);
   }
-
-  function onChangeSearchText(e) {
+  function hamburgerClickHandler() {
+    setIsHamburgerClicked(!isHamburgerClicked);
+  }
+  //search input 설정
+  function onChangeSearchTextHandler(e) {
     setSearchText(e.target.value);
   }
   function enterPressHandler(e) {
@@ -205,6 +214,35 @@ function Header() {
 
   return (
     <Nav className="header_container">
+      {props.isHamburger ? (
+        <div className="hamburger_container">
+          <Button className="hamburger" variant="light">
+            {isHamburgerClicked ? (
+              <span
+                className="material-symbols-outlined"
+                ref={siedMenuModalRef}
+                onClick={hamburgerClickHandler}
+                role="presentation"
+              >
+                close
+              </span>
+            ) : (
+              <span
+                className="material-symbols-outlined"
+                onClick={hamburgerClickHandler}
+                role="presentation"
+              >
+                menu
+              </span>
+            )}
+          </Button>
+          {isHamburgerClicked ? (
+            <div className="sidemenu-container">
+              <SideMenu />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       {/* // eslint-disable-next-line jsx-a11y/alt-text */}
       {/* 로고: / 홈으로 이동하는 Nav.Nink 달아주기*/}
       <Nav.Link href="/">
@@ -216,10 +254,10 @@ function Header() {
           />
         </div>
       </Nav.Link>
-      <Nav.Link className="products">
+      <div className="products">
         <Button
           ref={productsModalRef}
-          className={`products-button ${
+          className={`products-button  ${
             isProductClicked ? 'isProductClicked' : ''
           }`}
           variant="outline-secondary"
@@ -233,14 +271,15 @@ function Header() {
             btnRef={productsModalRef.current}
           />
         ) : null}
-      </Nav.Link>
+      </div>
+
       <Form.Group className="serch-container">
         <Form.Control
           placeholder="search"
           size="sm"
           type="text"
           value={searchText}
-          onChange={onChangeSearchText}
+          onChange={onChangeSearchTextHandler}
           onKeyPress={enterPressHandler}
         />
         {/* <Button variant="outline-secondary" id="serch-icon">
@@ -249,9 +288,11 @@ function Header() {
       </Form.Group>
       {/* 유저 프로필 주소 설정 (href="/users"임의로 정했습니다.) */}
       <Nav.Link href="/users">
-        <span className="material-symbols-outlined">account_circle</span>
+        <Button className="" variant="light">
+          <span className="material-symbols-outlined">account_circle</span>
+        </Button>
       </Nav.Link>
-      <Nav.Link className="help">
+      <Button className="help help-button" variant="light">
         <span
           ref={helpModalRef}
           className="material-symbols-outlined"
@@ -266,10 +307,14 @@ function Header() {
             helpRef={helpModalRef.current}
           />
         ) : null}
-      </Nav.Link>
-      <Nav.Link href="/logout">
+      </Button>
+      {/*  로그아웃 구현 필요 (+모달) */}
+      <Button className="" variant="light">
+        {/* 로그아웃 페이지가 아니라.. 모달 구현이라 Nav.Link 태그는 주석 처리 했습니다.! */}
+        {/* <Nav.Link href="/logout"> */}
         <span className="material-symbols-outlined">logout</span>{' '}
-      </Nav.Link>
+        {/* </Nav.Link> */}
+      </Button>
     </Nav>
   );
 }
