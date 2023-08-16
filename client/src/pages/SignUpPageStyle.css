@@ -9,8 +9,9 @@
   
 .form_container {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     padding: 20px;
+    margin-top: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -30,5 +31,38 @@
   }
   .caption{
     font-size: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
+
+  .social-login-buttons {
+    margin-top: 20px;
+  }
+  
+  .social-login-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .icon{
+    padding-right: 7px;
+  }
+  .social-login-button.google {
+    background-color: white;
+
+  }
+  
+  .social-login-button.github {
+    background-color: #333;
+    color: white;
+  }
+  
+  .social-login-button.facebook {
+    background-color: #385499;
+    color: white;
+  }
+  
   
