@@ -3,6 +3,7 @@ package pre012.project.exception;
 import lombok.Getter;
 
 public enum ExceptionCode {
+    INVALID_SORT_PARAMETER(400, "Invalid Sort Parameter Name"),
     USER_NOT_FOUND(404, "User Not Found"),
     QUESTION_NOT_FOUND(404, "QUESTION Not Found"),
     ANSWER_NOT_FOUND(404, "ANSWER Not Found"),

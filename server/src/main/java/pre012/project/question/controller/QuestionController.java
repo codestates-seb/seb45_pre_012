@@ -1,6 +1,7 @@
 package pre012.project.question.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -35,10 +36,21 @@ public class QuestionController {
     }
 
     // 전체 질문 조회
+    // 페이징 기능 추가
+    // - 한 페이지에 15개씩 'lastModifiedDate' 기준으로 정렬 (수정된 질문은 최근 질문으로 구분)
     @GetMapping
-    public ResponseEntity getQuestions() {
-        List<Question> questionList = questionService.getAllQuestions();
-        return new ResponseEntity(mapper.questionListToQuestionResponseDTOList(questionList), HttpStatus.OK);
+    public ResponseEntity<List<QuestionResponseDTO>> getQuestions(
+            @RequestParam(required = false, defaultValue = "1") @Positive int page,
+            @RequestParam(required = false, defaultValue = "15") @Positive int size,
+            @RequestParam(required = false, defaultValue = "lastModifiedDate") String recent,
+            @RequestParam(required = false, defaultValue = "DESC") String sort) {
+
+        Page<Question> pageQuestions = questionService.getPagingAllQuestions(page - 1, size, recent, sort);
+        List<Question> questionList = pageQuestions.getContent();
+
+        List<QuestionResponseDTO> questionResponseDTOList = mapper.questionListToQuestionResponseDTOList(questionList);
+
+        return new ResponseEntity<>(questionResponseDTOList, HttpStatus.OK);
     }
 
     // 특정 id로 질문 조회
@@ -60,7 +72,7 @@ public class QuestionController {
 
     // 질문 삭제
     @DeleteMapping("/{question_id}")
-    public ResponseEntity deleteQuestion(@PathVariable("question_id") @Positive Long questionId){
+    public ResponseEntity deleteQuestion(@PathVariable("question_id") @Positive Long questionId) {
         questionService.deleteQuestion(questionId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }

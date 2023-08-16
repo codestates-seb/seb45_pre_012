@@ -45,7 +45,7 @@ public interface QuestionMapper {
                 .build();
     }
 
-    default Question questionPatchDTOtoQuestion(QuestionPatchDTO questionPatchDTO){
+    default Question questionPatchDTOtoQuestion(QuestionPatchDTO questionPatchDTO) {
         Question question = new Question();
         question.setTitle(questionPatchDTO.getTitle());
         question.setContent(questionPatchDTO.getContent());

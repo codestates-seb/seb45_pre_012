@@ -1,8 +1,14 @@
 package pre012.project.question.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import pre012.project.exception.BusinessLogicException;
+import pre012.project.exception.ExceptionCode;
 import pre012.project.question.entity.Question;
 import pre012.project.question.repository.QuestionRepository;
 
@@ -28,6 +34,12 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public Page<Question> getPagingAllQuestions(int page, int size, String recent, String sort) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, recent));
+        return questionRepository.findAll(pageable);
+    }
+
+    @Override
     public Question getQuestion(Long questionId) {
         Question question = questionRepository.findById(questionId).orElseThrow(NullPointerException::new);
         question.setViews(question.getViews() + 1);
@@ -47,6 +59,9 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void deleteQuestion(Long questionId) {
-
+        Question question = questionRepository.findById(questionId).orElse(null);
+        if (question != null) {
+            questionRepository.deleteById(questionId);
+        }
     }
 }
