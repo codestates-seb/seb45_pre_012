@@ -7,6 +7,11 @@
   /* border 속성 */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) ;
   border-top:2px solid #ef8236;
+
+  /* 상단 고정 */
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
 }
 
 /* 헤더 로고 container 로고 크기 맞춰 봅니다아..*/

@@ -5,7 +5,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './components/Footer.jsx';
 
-import SideMenu from './components/SideMenu';
+// import SideMenu from './components/SideMenu';
 import Header from './components/Header';
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
     <div>
       <div className="App"> hello</div>
       <Header isHamburger={true} />
-      <Header isHamburger={false} />
-      <SideMenu selected={'Home'}></SideMenu>
+      {/* <Header isHamburger={false} /> */}
+      {/* <SideMenu selected={'Home'}></SideMenu> */}
 
       <Footer />
     </div>
