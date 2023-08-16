@@ -1,0 +1,16 @@
+.text_lg{
+  font-size: 35px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.ml_5_btn{
+  margin-left: 200px;
+  padding: 10px 5px;
+  background-color: rgb(18, 132, 255);
+}
+
+.mr_5_cardtext{
+  margin-right: 30px;
+  font-weight: 300;
+}

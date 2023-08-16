@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Container, Navbar, Button, Row, Col, Form } from 'react-bootstrap';
 import { ReactComponent as Sprite } from '../assets/sprites.svg';
-import './Header.css';
+import './BaseHeader.css';
 import Ham from './Ham.jsx';
 
-const Header = () => {
+const BaseHeader = () => {
   return (
     <Navbar expand="lg" fixed="top" className="header__Navbar bg-white">
       <Container
@@ -23,10 +23,12 @@ const Header = () => {
                 className="d-flex align-items-center justify-content-center"
               >
                 <Ham />
-                <Link to="/" className="text-center home_link">
-                  <Sprite className="logo_sprite" />
-                  <span className="header_text1">Stack</span>
-                  <span className="header_text2">Overflow</span>
+                <Link to="/" className="logo_link">
+                  <div className="logo_btn d-flex p-3">
+                    <Sprite className="logo_sprite" />
+                    <span className="header_text1">Stack</span>
+                    <span className="header_text2">Overflow</span>
+                  </div>
                 </Link>
               </Col>
             </Row>
@@ -36,17 +38,17 @@ const Header = () => {
               <Col lg={1} />
               <Col lg={3} className="text-center ml-2 p-3">
                 <Link to="/" className="text-center sign_up_text header_link">
-                  About
+                  <div className="header_alink about">About</div>
                 </Link>
               </Col>
               <Col lg={3} className="text-center ml-2 p-3">
                 <Link to="/" className="text-center sign_up_text header_link">
-                  Products
+                  <div className="header_alink products">Products</div>
                 </Link>
               </Col>
               <Col lg={5} className="text-center p-3">
                 <Link to="/" className="text-left sign_up_text header_link">
-                  &nbsp;&nbsp;&nbsp;For Teams
+                  <div className="header_alink forteams">For Teams</div>
                 </Link>
               </Col>
             </Row>
@@ -72,4 +74,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default BaseHeader;
