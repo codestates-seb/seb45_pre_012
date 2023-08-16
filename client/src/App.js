@@ -9,17 +9,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 import SignUpPage from './pages/SignUpPage.jsx';
 // import Footer from './components/Footer.jsx';
 
-import SideMenu from './components/SideMenu';
+// import SideMenu from './components/SideMenu';
 import Header from './components/Header';
+
 function App() {
   return (
+
 
     <Router>
       <div className="App">
         <Routes>
           <Route path="/signup" element={<SignUpPage />} />
         </Routes>
-        {/* <Footer /> */}
       </div>
     </Router>
 
