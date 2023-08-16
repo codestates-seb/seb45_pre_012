@@ -11,7 +11,43 @@ const SignUpPage = () => {
   return (
     <Container className="signup_container">
       <Row className="justify-content-center">
-        <Col xs={12} md={8} lg={8}>
+        <Col xs={12} md={8} lg={12} className="d-flex">
+          <div className="left-panel">
+            <div className="stack-overflow-text">
+              Join the Stack Overflow community
+            </div>
+            <div className="stack-overflow-text small">
+              <div className="icon-text-container">
+                <i className="material-icons">chat_bubble</i>
+                <span>Get unstuck — ask a question</span>
+              </div>
+              <div className="icon-text-container">
+                <i className="material-icons">arrow_upward</i>
+                <span>Unlock new privileges like voting and commenting</span>
+              </div>
+              <div className="icon-text-container">
+                <i className="material-icons">label</i>
+                <span>
+                  Save your favorite questions, answers, watch tags, and more
+                </span>
+              </div>
+              <div className="icon-text-container">
+                <i className="material-icons">emoji_events</i>
+                <span>Earn reputation and badges</span>
+              </div>
+            </div>
+            <div className="stack-overflow-text exsmall">
+              Collaborate and share knowledge with a private group for FREE.
+              <br />
+              <a
+                href="https://stackoverflow.co/teams/?utm_source=so-owned&utm_medium=product&utm_campaign=free-50&utm_content=public-sign-up"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Stack Overflow for Teams free for up to 50 users.
+              </a>
+            </div>
+          </div>
           <Form>
             <div className="social-login-buttons">
               <Button variant="light" className="social-login-button google">
