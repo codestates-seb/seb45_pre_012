@@ -1,6 +1,7 @@
 import { ButtonGroup, Button } from 'react-bootstrap';
 import './HomeFilterBtn.css';
 
+// eslint-disable-next-line react/prop-types
 const HomeFilterBtn = ({ HomeFilterBtnClick, homeFilter }) => {
   const HomeFilterBtnContent = [
     {
