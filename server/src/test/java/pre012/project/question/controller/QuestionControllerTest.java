@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import pre012.project.question.dto.QuestionPatchDTO;
 import pre012.project.question.dto.QuestionPostDTO;
 import pre012.project.question.dto.QuestionResponseDTO;
 import pre012.project.question.entity.Question;
@@ -107,6 +108,36 @@ public class QuestionControllerTest {
                 .andExpect(jsonPath("$.title").value("Test Title"))
                 .andExpect(jsonPath("$.content").value("Test Content"));
     }
+
+    @Test
+    void patchQuestionTest() throws Exception {
+        // Given
+        Long questionId = 1L;
+
+        QuestionPatchDTO patchDTO = new QuestionPatchDTO();
+        patchDTO.setTitle("Updated Title");
+        patchDTO.setContent("Updated Content");
+
+        Question originalQuestion = new Question();
+        originalQuestion.setQuestionId(questionId);
+        originalQuestion.setTitle("Original Title");
+        originalQuestion.setContent("Original Content");
+
+        Question updatedQuestion = new Question();
+        updatedQuestion.setQuestionId(questionId);
+        updatedQuestion.setTitle(patchDTO.getTitle());
+        updatedQuestion.setContent(patchDTO.getContent());
+
+        when(questionService.updateQuestion(eq(questionId), any(Question.class))).thenReturn(updatedQuestion);
+        when(questionMapper.questionPatchDTOtoQuestion(any(QuestionPatchDTO.class))).thenReturn(updatedQuestion);
+
+        // When & Then
+        mockMvc.perform(patch("/questions/edit/{question_id}", questionId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(patchDTO)))
+                .andExpect(status().isCreated());
+    }
+
 
     private String asJsonString(Object obj) throws Exception {
         return objectMapper.writeValueAsString(obj);

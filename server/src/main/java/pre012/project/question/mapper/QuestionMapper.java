@@ -1,6 +1,7 @@
 package pre012.project.question.mapper;
 
 import org.mapstruct.Mapper;
+import pre012.project.question.dto.QuestionPatchDTO;
 import pre012.project.question.dto.QuestionPostDTO;
 import pre012.project.question.dto.QuestionResponseDTO;
 import pre012.project.question.entity.Question;
@@ -42,5 +43,12 @@ public interface QuestionMapper {
                 .createdDate(question.getCreatedDate())
                 .lastModifiedDate(question.getLastModifiedDate())
                 .build();
+    }
+
+    default Question questionPatchDTOtoQuestion(QuestionPatchDTO questionPatchDTO){
+        Question question = new Question();
+        question.setTitle(questionPatchDTO.getTitle());
+        question.setContent(questionPatchDTO.getContent());
+        return question;
     }
 }

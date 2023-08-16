@@ -12,4 +12,6 @@ public interface QuestionService {
     List<Question> getAllQuestions();
 
     Question getQuestion(Long questionId);
+
+    Question updateQuestion(Long questionId, Question question);
 }
