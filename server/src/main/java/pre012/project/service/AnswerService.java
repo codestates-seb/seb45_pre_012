@@ -2,6 +2,7 @@ package pre012.project.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pre012.project.entity.Answers;
 import pre012.project.repository.AnswerRepository;
 
@@ -10,6 +11,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AnswerService {
 
     private final AnswerRepository repository;
