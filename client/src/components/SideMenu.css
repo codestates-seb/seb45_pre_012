@@ -1,0 +1,54 @@
+/* menu를 담고있는 div 요소 */
+.nav_container{
+  width: 164px;
+  font-size: 0.8rem;
+  margin: 0
+}
+/* a: Nav.Link 컴포넌트 패딩 지정 */
+.nav_container a{
+  padding: 0.25rem 0.5rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.nav_container a:hover{
+  /* padding: 0.25rem 0.5rem; */
+  color: rgba(0, 0, 0);
+}
+/* Nav.Link disabled 링크로 이동하는 기능 없음 (PUBLIC, COLLECTIVES, TEAMS) */
+.nav_container .disabled{
+  font-size: 0.7rem;
+}
+
+/* PUBLIC나 COLLECTIVES, TEAMS 의 하위 메뉴 그룹  */
+.nav_container ul{
+  padding: 0 ;
+  margin-bottom: 15px;
+}
+
+/* 아이콘 들어가기 때문에 첫 번째 링크 제외 하고 패딩을 따로 넣어줌 */
+.nav_container .public_container a:not(:first-of-type){
+  padding-left: 30px;
+}
+
+/* 아이콘 사이즈 지정 */
+.material-symbols-outlined {
+  font-size: 1.1rem;
+}
+/* 아이콘 span으로 들어와서 이 span 수직 중앙 정렬되도록 */
+span {
+  display: table-cell;
+  padding-right: 3px;
+  text-align: left;
+  vertical-align: middle;
+}
+span.color_ef8236 {
+  color:#ef8236
+}
+
+/* 선택된 a즉 Nav.Link 컴포넌트 스타일 */
+.nav_container a.active{
+  color: rgba(0, 0, 0);
+  background-color:rgba(0, 0, 0, 0.1);
+  border-right:2px solid #ef8236;
+  font-weight: bold;
+}
