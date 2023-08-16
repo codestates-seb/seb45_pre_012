@@ -68,4 +68,10 @@ jobs:
               'sudo docker run -d --name server -p 8080:8080 pre-pro'
             ]" \
             --output text
+
+      - name: Read application.yml
+        run: |
+          echo "DB_ENDPOINT=${{ secrets.DB_ENDPOINT }}" >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+          echo "S3_ENDPOINT=${{ secrets.S3_ENDPOINT }}" >> $GITHUB_ENV
       
