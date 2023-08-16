@@ -1,0 +1,198 @@
+.header_container{
+  /* 가운데 정렬 */
+  text-align: center;
+  justify-content: center;
+  align-items: center; 
+
+  /* border 속성 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) ;
+  border-top:2px solid #ef8236;
+
+  /* 상단 고정 */
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+}
+
+/* 헤더 로고 container 로고 크기 맞춰 봅니다아..*/
+.header_container .header_img_container{
+  width: 148px;
+  height: 47.955px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* 헤더 로고 */
+.header_container .header_img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* a: Nav.Link 컴포넌트 패딩 지정  & 안에 요소를 수직 가운데 정렬*/
+.header_container .nav-link{
+  padding: 0.25rem;
+  display: flex;
+  align-items: center; 
+}
+
+.header_container .btn-light{
+  background-color: #fff;
+  border-color: #fff;
+  border: 0;
+  border-radius: 50px;
+  padding: 0.25rem 0.3rem;
+  margin: 0.25rem; 
+}
+
+.serch-container{
+  display: flex;
+  align-items: center; 
+}
+
+.products{
+ position: relative;
+}
+.help{
+  position: relative;
+ }
+
+/* products 버튼 */
+.products-button{
+  width: 77px;
+  height: 30px;
+  font-size: 13px;
+  border-color: #fff;
+  border-radius: 50px;
+  margin: 0.25rem;
+}
+
+/* products 버튼에 마우스 hover하는 경우 */
+.products-button:hover{
+  color: black;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #fff;
+}
+
+
+/* products 버튼이 눌린 경우 */
+.products-button.isProductClicked{
+  color: #fff;
+  background-color: #ef8236;
+  border-color: #fff;
+}
+
+/* products 버튼 누를 시에 생기는 모달 컴포넌트 스타일 */
+
+/* products버튼 눌렀을 경우 발생하는 prodcuts-container 모달 느낌으로 구현 */
+.products-container{
+  z-index: 1;
+  margin-top: 6px;
+  position: absolute;
+  top : 50px;
+  right : -50px;
+}
+
+.products-container .card .list-group-item:hover{
+  background-color:rgba(0, 0, 0, 0.1); 
+}
+.products-container .card a.nav-link{
+  color: black;
+  padding: 0;
+}
+.products-container .card-body{
+  padding: 0;
+  text-align: left;
+}
+.products-container .card-title{
+  font-size: 13px;
+}
+.products-container .card-subtitle{
+  font-size: 11px;
+}
+
+/* help 버튼 누를 시에 생기는 모달 컴포넌트 스타일 */
+
+/* help 눌렀을 경우 발생하는 help-container 모달 느낌으로 구현 */
+.help-container{
+  z-index: 1;
+  margin-top: 6px;
+  position: absolute;
+  top : 45px;
+  right : -65px;
+}
+
+.help-container .card .list-group-item:hover{
+  background-color:rgba(0, 0, 0, 0.1); 
+}
+.help-container .card a.nav-link{
+  padding: 0;
+}
+.help-container .card-body{
+  padding: 0;
+  text-align: left;
+}
+.help-container .card-title{
+  font-size: 13px;
+}
+.help-container .card-subtitle{
+  font-size: 11px;
+}
+
+/* search input 스타일 */
+.form-control{
+  position: relative;
+  flex: 1 1 auto;
+  width: 50vw;
+  min-width: 0;
+}
+
+/* 아이콘 크기 */
+.header_container .material-symbols-outlined {
+  display: block;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.header_container .material-symbols-outlined:hover {
+  font-size: 1.5rem;
+  color: #000
+}
+
+.hamburger_container {
+  position: relative;
+}
+.hamburger_container .sidemenu-container{
+  background-color: #fff;
+  z-index: 1;
+  margin-top: 3px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);;
+  position: absolute;
+  top : 40px;
+  right : -60px;
+}
+
+
+/* 햄버거 아이콘 사이즈 지정 */
+.hamburger_container .sidemenu-container .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+/* 아이콘 span으로 들어와서 이 span 수직 중앙 정렬되도록 */
+.hamburger_container .sidemenu-container span:not(:first) {
+  display: table-cell;
+  padding-right: 3px;
+  text-align: left;
+  vertical-align: middle;
+}
+.hamburger_container .sidemenu-container span.color_ef8236 {
+  color:#ef8236
+}
+
+/* 선택된 a즉 Nav.Link 컴포넌트 스타일 */
+.hamburger_container .sidemenu-container .nav_container a.active{
+  color: rgba(0, 0, 0);
+  background-color:rgba(0, 0, 0, 0.1);
+  border-right:2px solid #ef8236;
+  font-weight: bold;
+}
