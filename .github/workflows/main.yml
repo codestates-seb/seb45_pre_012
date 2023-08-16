@@ -51,7 +51,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ap-northeast-2
-          DB_ENDPOINT: ${{ secrets.RDS_ENDPOINT }}
+          DB_ENDPOINT: ${{ secrets.DB_ENDPOINT }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
         run: |
