@@ -7,5 +7,14 @@ spring:
     username: admin
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  properties:
+    hibernate:
+      show_sql: true
+      format_sql: true
+      ddl-auto: update
+    logging:
+      level:
+        org.hibernate: DEBUG
+
 config:
   domain: http://prepro.s3-website.ap-northeast-2.amazonaws.com
