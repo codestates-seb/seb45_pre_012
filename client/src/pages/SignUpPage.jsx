@@ -9,6 +9,8 @@ import {
 import { useState } from 'react';
 import axios from 'axios';
 
+const url = '52.78.149.75:8080';
+
 const SignUpPage = () => {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,7 +19,7 @@ const SignUpPage = () => {
   async function onSubmitHandler() {
     try {
       // 주소 찾아넣기
-      const response = await axios.post('52.78.149.75:8080/users/create', {
+      const response = await axios.post(`${url}/users/create`, {
         displayName: displayName,
         email: email,
         password: password,
