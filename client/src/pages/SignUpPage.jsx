@@ -17,9 +17,9 @@ const SignUpPage = () => {
   const [password, setPassword] = useState('');
 
   const user = {
-    displayName: displayName,
     email: email,
     password: password,
+    userName: displayName,
   };
 
   const data = JSON.stringify(user);
