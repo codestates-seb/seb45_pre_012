@@ -10,5 +10,6 @@ public interface AnswerService {
     AnswerResponseDTO createAnswer(Long questionId, AnswerPostDTO answerPostDTO);
 
     AnswerResponseDTO updateAnswer(Long questionId, Long answerId, AnswerPatchDTO answerPatchDTO);
-}
 
+    void deleteAnswer(Long answerId);
+}

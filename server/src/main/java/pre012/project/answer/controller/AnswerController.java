@@ -37,4 +37,11 @@ public class AnswerController {
         return new ResponseEntity(answer, HttpStatus.OK);
     }
 
+    // 답변 삭제
+    @DeleteMapping("{answer_id}")
+    public ResponseEntity deleteAnswer(@PathVariable("question_id") @Positive Long questionId,
+                                       @PathVariable("answer_id") @Positive Long answerId) {
+        answerService.deleteAnswer(answerId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 }

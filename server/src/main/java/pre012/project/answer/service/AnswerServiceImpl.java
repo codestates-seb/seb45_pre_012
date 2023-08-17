@@ -40,4 +40,12 @@ public class AnswerServiceImpl implements AnswerService {
 
         return mapper.answerToAnswerResponseDTO(answer);
     }
+
+    @Override
+    public void deleteAnswer(Long answerId) {
+        Answer answer = answerRepository.findById(answerId).orElse(null);
+        if (answer != null) {
+            answerRepository.deleteById(answerId);
+        }
+    }
 }
