@@ -12,13 +12,12 @@ spring:
     hibernate:
       show_sql: true
       format_sql: true
-
+      ddl-auto: update
     logging:
       level:
         org.hibernate: DEBUG
 
-  data:
-    schema: classpath:schema.sql
+
 
 config:
   domain: http://prepro.s3-website.ap-northeast-2.amazonaws.com
