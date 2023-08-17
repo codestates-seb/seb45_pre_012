@@ -17,7 +17,5 @@ spring:
       level:
         org.hibernate: DEBUG
 
-
-
 config:
   domain: http://prepro.s3-website.ap-northeast-2.amazonaws.com
