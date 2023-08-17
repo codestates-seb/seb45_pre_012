@@ -32,14 +32,10 @@ public class AnswerController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Answers> create(@Validated @RequestBody AnswerCreateDto answerCreateDto) {
-        Answers newAnswers = new Answers();
-        newAnswers.setContent(answerCreateDto.getContent());
-        newAnswers.setImage(answerCreateDto.getImage());
-        newAnswers.setPostDate(answerCreateDto.getPostDate());
+    public ResponseEntity<Answers> create(@Validated @RequestBody Answers answers) {
 
-        service.createAnswer(newAnswers);
-        return new ResponseEntity<>(newAnswers, HttpStatus.CREATED);
+        service.createAnswer(answers);
+        return new ResponseEntity<>(answers, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{answerId}/patch")
