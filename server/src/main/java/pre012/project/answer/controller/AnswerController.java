@@ -8,9 +8,11 @@ import pre012.project.answer.dto.AnswerPatchDTO;
 import pre012.project.answer.dto.AnswerPostDTO;
 import pre012.project.answer.dto.AnswerResponseDTO;
 import pre012.project.answer.service.AnswerService;
+import pre012.project.question.utils.UriCreator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,7 +26,9 @@ public class AnswerController {
                                      @RequestBody AnswerPostDTO answerPostDTO) {
         AnswerResponseDTO answer = answerService.createAnswer(questionId, answerPostDTO);
         answer.setQuestionId(questionId);
-        return new ResponseEntity(answer, HttpStatus.CREATED);
+
+        URI location = UriCreator.createUri("/questions" + questionId + "/answers", answer.getQuestionId());
+        return ResponseEntity.created(location).body(answer);
     }
 
     // 답변 수정
@@ -38,7 +42,7 @@ public class AnswerController {
     }
 
     // 답변 삭제
-    @DeleteMapping("{answer_id}")
+    @DeleteMapping("/{answer_id}")
     public ResponseEntity deleteAnswer(@PathVariable("question_id") @Positive Long questionId,
                                        @PathVariable("answer_id") @Positive Long answerId) {
         answerService.deleteAnswer(answerId);
