@@ -20,5 +20,11 @@ spring:
       level:
         org.hibernate: DEBUG
 
+  mvc:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"
+      allowed-headers: "*"
+
 config:
-  domain: http://prepro.s3-website.ap-northeast-2.amazonaws.com
+  domain: http://prepro012.s3-website.ap-northeast-2.amazonaws.com
