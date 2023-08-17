@@ -22,9 +22,6 @@ public class UserController {
         return ResponseEntity.ok("회원가입 성공");
     }
 
-
-
-
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody User user) {
         if (userService.authenticateUser(user.getEmail(), user.getPassword())) {
