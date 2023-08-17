@@ -27,6 +27,7 @@ public class AnswerPatchDto {
     private String postDate;
 
     public AnswerPatchDto() {
+
     }
 
     public String createTime() { // 생성되는 시간을 만들어주는 메서드
