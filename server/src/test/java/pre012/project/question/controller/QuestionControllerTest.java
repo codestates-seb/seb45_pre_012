@@ -115,7 +115,7 @@ public class QuestionControllerTest {
         Long questionId = 1L;
 
         QuestionPatchDTO patchDTO = new QuestionPatchDTO();
-        patchDTO.setContent("Updated Title");
+        patchDTO.setTitle("Updated Title");
         patchDTO.setContent("Updated Content");
 
         Question originalQuestion = new Question();

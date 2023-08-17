@@ -62,9 +62,4 @@ public class Question {
     public Question() {
     }
 
-    // 답변 수 증가 메서드
-    public void incrementAnswers() {
-        if (answers == null) answers = 1;
-        else answers++;
-    }
 }

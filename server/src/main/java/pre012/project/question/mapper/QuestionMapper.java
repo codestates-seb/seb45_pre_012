@@ -16,6 +16,7 @@ public interface QuestionMapper {
         question.setTitle(questionPostDTO.getTitle());
         question.setContent(questionPostDTO.getContent());
         question.setViews(0);
+        question.setAnswers(0);
         return question;
     }
 
@@ -28,6 +29,7 @@ public interface QuestionMapper {
                         .title(question.getTitle())
                         .content(question.getContent())
                         .views(question.getViews())
+                        .answers(question.getAnswers())
                         .createdDate(question.getCreatedDate())
                         .lastModifiedDate(question.getLastModifiedDate())
                         .build())
@@ -40,6 +42,7 @@ public interface QuestionMapper {
                 .title(question.getTitle())
                 .content(question.getContent())
                 .views(question.getViews())
+                .answers(question.getAnswers())
                 .createdDate(question.getCreatedDate())
                 .lastModifiedDate(question.getLastModifiedDate())
                 .build();
