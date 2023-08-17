@@ -3,8 +3,19 @@
 }
 
 .askform_container .askform_title{
-  padding: 20px 0;
+  padding: 40px 0;
 }
-.askform_container div .header_card_container{
+
+
+.askform_body_container{
   display: flex;
+  flex-wrap: wrap;
+}
+
+.header_card_container p{
+  font-size: small;
+}
+
+.askform_body {
+  margin :0
 }
