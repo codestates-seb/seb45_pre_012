@@ -17,6 +17,15 @@ jobs:
           java-version: '11'
           distribution: 'zulu'
 
+      - name: set Yaml
+        uses: microsoft/variable-substitution@v1
+        with:
+          file: ./server/src/main/resources/application.yml
+        env:
+          spring.datasource.url: ${{ secrets.DB_ENDPOINT }}
+          spring.datasource.username: admin
+          spring.datasource.password: ${{ secrets.DB_PASSWORD }}
+
       - name: Set up Node.js 16
         uses: actions/setup-node@v3
         with:

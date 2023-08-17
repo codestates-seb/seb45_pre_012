@@ -8,4 +8,4 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 config:
-  domain: ${S3_ENDPOINT}
+  domain: http://prepro.s3-website.ap-northeast-2.amazonaws.com
