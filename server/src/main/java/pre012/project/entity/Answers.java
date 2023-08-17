@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 public class Answers {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
 
     @Column(name = "CONTENT")
