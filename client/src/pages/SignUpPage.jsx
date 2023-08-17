@@ -6,8 +6,38 @@ import {
   faGithub,
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
+import { useState } from 'react';
+import axios from 'axios';
 
 const SignUpPage = () => {
+  const [displayName, setDisplayName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  async function onSubmitHandler() {
+    try {
+      // 주소 찾아넣기
+      const response = await axios.post('52.78.149.75:8080/users/create', {
+        displayName: displayName,
+        email: email,
+        password: password,
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function onChangedisplayNameHandler(e) {
+    setDisplayName(e.target.value);
+  }
+  function onChangeEmailHandler(e) {
+    setEmail(e.target.value);
+  }
+  function onChangePasswordHandler(e) {
+    setPassword(e.target.value);
+  }
+
   return (
     <Container className="signup_container">
       <Row className="justify-content-center">
@@ -66,17 +96,28 @@ const SignUpPage = () => {
             <div className="form_container">
               <Form.Group controlId="username">
                 <Form.Label>Display name</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  type="text"
+                  value={displayName}
+                  onChange={onChangedisplayNameHandler}
+                />
               </Form.Group>
-
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" />
+                <Form.Control
+                  type="email"
+                  value={email}
+                  onChange={onChangeEmailHandler}
+                />
               </Form.Group>
 
               <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" />
+                <Form.Control
+                  type="password"
+                  value={password}
+                  onChange={onChangePasswordHandler}
+                />
               </Form.Group>
               <p className="caption">
                 Passwords must contain at least eight characters, including at
@@ -91,7 +132,7 @@ const SignUpPage = () => {
                   </Form.Check.Label>
                 </Form.Check>
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="button" onClick={onSubmitHandler}>
                 Sign Up
               </Button>
               <p className="caption">
