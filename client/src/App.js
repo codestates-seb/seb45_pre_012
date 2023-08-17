@@ -5,14 +5,16 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from './components/Footer.jsx';
 
-import SideMenu from './components/SideMenu';
+// import SideMenu from './components/SideMenu';
+import AskForm from './components/AskForm';
 import Header from './components/Header';
 function App() {
   return (
     <div>
       <div className="App"> hello</div>
       <Header />
-      <SideMenu selected={'Home'}></SideMenu>
+      {/* <SideMenu selected={'Home'}></SideMenu> */}
+      <AskForm />
       <Footer />
     </div>
   );

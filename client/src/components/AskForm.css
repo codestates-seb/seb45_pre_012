@@ -1,0 +1,10 @@
+.askform_container div{
+  margin: 0 auto;
+}
+
+.askform_container .askform_title{
+  padding: 20px 0;
+}
+.askform_container div .header_card_container{
+  display: flex;
+}
