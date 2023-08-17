@@ -20,7 +20,7 @@ jobs:
       - name: set Yaml
         uses: microsoft/variable-substitution@v1
         with:
-          file: ./server/src/main/resources/application.yml
+          files: ./server/src/main/resources/application.yml
         env:
           spring.datasource.url: ${{ secrets.DB_ENDPOINT }}
           spring.datasource.username: admin
