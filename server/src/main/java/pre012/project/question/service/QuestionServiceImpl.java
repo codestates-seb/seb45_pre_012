@@ -6,6 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import pre012.project.answer.entity.Answer;
+import pre012.project.answer.repository.AnswerRepository;
 import pre012.project.question.entity.Question;
 import pre012.project.question.repository.QuestionRepository;
 
@@ -19,6 +21,7 @@ import java.util.Optional;
 public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionRepository questionRepository;
+    private final AnswerRepository answerRepository;
 
     @Override
     public Question createQuestion(Question question) {
@@ -60,5 +63,10 @@ public class QuestionServiceImpl implements QuestionService {
         if (question != null) {
             questionRepository.deleteById(questionId);
         }
+    }
+
+    @Override
+    public List<Answer> getQuestionAnswers(Question question) {
+        return answerRepository.findAllByQuestion(question);
     }
 }

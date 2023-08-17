@@ -13,5 +13,5 @@ public class AnswerResponseDTO {
     private String answerContent;
     private LocalDateTime createdDate;
     private LocalDateTime lastModifiedDate;
-    private String nickName;
+    private String userName;
 }
