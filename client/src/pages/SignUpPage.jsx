@@ -16,14 +16,18 @@ const SignUpPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const user = {
+    displayName: displayName,
+    email: email,
+    password: password,
+  };
+
+  const data = JSON.stringify(user);
   async function onSubmitHandler() {
+    console.log(data);
     try {
       // 주소 찾아넣기
-      const response = await axios.post(`${url}/users/create`, {
-        displayName: displayName,
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(`${url}/users/create`, data);
       console.log(response);
     } catch (error) {
       console.error(error);
