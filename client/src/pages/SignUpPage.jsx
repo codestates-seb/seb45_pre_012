@@ -84,7 +84,7 @@ const SignUpPage = () => {
               </a>
             </div>
           </div>
-          <Form>
+          <Form onSubmit={onSubmitHandler} method="post">
             <div className="social-login-buttons">
               <Button variant="light" className="social-login-button google">
                 <FontAwesomeIcon icon={faGoogle} className="icon" />
@@ -138,7 +138,7 @@ const SignUpPage = () => {
                   </Form.Check.Label>
                 </Form.Check>
               </Form.Group>
-              <Button variant="primary" type="button" onClick={onSubmitHandler}>
+              <Button variant="primary" type="submit">
                 Sign Up
               </Button>
               <p className="caption">
