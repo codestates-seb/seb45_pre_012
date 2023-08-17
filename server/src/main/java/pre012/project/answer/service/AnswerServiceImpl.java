@@ -2,6 +2,7 @@ package pre012.project.answer.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pre012.project.answer.dto.AnswerPatchDTO;
 import pre012.project.answer.dto.AnswerPostDTO;
 import pre012.project.answer.dto.AnswerResponseDTO;
 import pre012.project.answer.entity.Answer;
@@ -23,12 +24,20 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public AnswerResponseDTO createAnswer(Long questionId, AnswerPostDTO answerPostDTO) {
         Question question = questionRepository.findById(questionId).orElseThrow();
-        question.incrementAnswers(); // Question 엔티티에 대한 변경
+        question.setAnswers(question.getAnswers() + 1);
 
-        Answer answer=  mapper.answerPostDTOtoAnswer(answerPostDTO);
+        Answer answer = mapper.answerPostDTOtoAnswer(answerPostDTO);
         answer.setQuestion(question); // Answer 엔티티 생성 및 연결
 
         Answer createdAnswer = answerRepository.save(answer);
         return mapper.answerToAnswerResponseDTO(createdAnswer);
+    }
+
+    @Override
+    public AnswerResponseDTO updateAnswer(Long questionId, Long answerId, AnswerPatchDTO answerPatchDTO) {
+        Answer answer = answerRepository.findById(answerId).orElse(null);
+        answer.setAnswerContent(answerPatchDTO.getAnswerContent());
+
+        return mapper.answerToAnswerResponseDTO(answer);
     }
 }
