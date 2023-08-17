@@ -1,6 +1,7 @@
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 const LoginForm = ({ setLoginState }) => {
   const initialInfo = { email: '', password: '' };
   const [loginInfo, setLoginInfo] = useState(initialInfo);
@@ -8,7 +9,7 @@ const LoginForm = ({ setLoginState }) => {
   const [emptyPassword, setEmptyPassword] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
-  const [loginFailed, setLoginFailed] = useState(false);
+  const [loginFailed] = useState(false);
 
   // const LoginList = [
   //   {
@@ -19,7 +20,7 @@ const LoginForm = ({ setLoginState }) => {
 
   const handleLogin = (email, password) => {
     const emailRegex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     const passwordRegex = /^[A-Za-z\d!@#$%^&*()_+~\-=]{8,40}$/;
 
     if (email === '') setEmptyEmail(true);
