@@ -49,7 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "http://52.78.149.75:8080",
                 "http://localhost:5173",
                 "http://localhost:3000",
-                "http://prepro012.s3-website.ap-northeast-2.amazonaws.com"));
+                "http://prepro012.s3-website.ap-northeast-2.amazonaws.com",
+                "*"));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setExposedHeaders(Arrays.asList("*","Authorization","Refresh"));
