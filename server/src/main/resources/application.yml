@@ -13,6 +13,7 @@ spring:
       show_sql: true
       format_sql: true
       dialect: org.hibernate.dialect.MySQL8Dialect
+      ddl-auto: create
 
   data:
     schema: classpath:schema.sql
@@ -26,5 +27,3 @@ spring:
       allowed-methods: "*"
       allowed-headers: "*"
 
-config:
-  domain: http://prepro012.s3-website.ap-northeast-2.amazonaws.com
