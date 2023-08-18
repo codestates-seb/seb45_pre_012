@@ -63,10 +63,7 @@ const SignUpPage = () => {
       // 주소 찾아넣기
       const response = await axios.post(
         `http://52.78.149.75:8080/users/create`,
-        data,
-        {
-          withCredentials: true,
-        },
+        JSON.stringfiy(user),
       );
       console.log(response);
     } catch (error) {
