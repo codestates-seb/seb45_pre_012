@@ -42,4 +42,8 @@ public class UserService {
         }
         return false;
     }
+
+    public void deleteAll() {
+        userRepository.deleteAll();
+    }
 }

@@ -32,6 +32,10 @@ public class UserController {
 
     }
 
+    @DeleteMapping("/delete")
+    public void deleteAll() {
+        userService.deleteAll();
+    }
 
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpServletRequest request, HttpServletResponse response) {
