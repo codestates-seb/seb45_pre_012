@@ -13,14 +13,6 @@ spring:
       show_sql: true
       format_sql: true
       dialect: org.hibernate.dialect.MySQL8Dialect
-      ddl-auto: create
-
-    logging:
-      level:
-        org:
-          hibernate:
-            SQL: DEBUG
-            type:
-              descriptor:
-                sql:
-                  BasicBinder: TRACE
+      ddl-auto: update
+      logging.level: debug
+      org.hibernate.SQL: debug
