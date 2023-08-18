@@ -9,7 +9,7 @@ import {
 import { useState } from 'react';
 import axios from 'axios';
 
-const url = '52.78.149.75:8080';
+// const url = '52.78.149.75:8080';
 
 const SignUpPage = () => {
   const [displayName, setDisplayName] = useState('');
@@ -61,9 +61,13 @@ const SignUpPage = () => {
     // 동기 함수로 사용시 onSubmitHandler앞에 async 붙이기
     try {
       // 주소 찾아넣기
-      const response = await axios.post(`${url}/users/create`, data, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `http://52.78.149.75:8080/users/create`,
+        data,
+        {
+          withCredentials: true,
+        },
+      );
       console.log(response);
     } catch (error) {
       console.error(error);
