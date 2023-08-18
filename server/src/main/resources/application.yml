@@ -1,7 +1,7 @@
 spring:
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   datasource:
     url: ${DB_ENDPOINT}
     username: admin
@@ -12,7 +12,7 @@ spring:
     hibernate:
       show_sql: true
       format_sql: true
-      dialect: org.hibernate.dialect.MySQL8Dialect
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
       ddl-auto: create
 
   data:
@@ -21,9 +21,4 @@ spring:
       level:
         org.hibernate: DEBUG
 
-  mvc:
-    cors:
-      allowed-origins: "*"
-      allowed-methods: "*"
-      allowed-headers: "*"
 
