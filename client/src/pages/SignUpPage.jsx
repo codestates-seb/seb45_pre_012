@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
 import axios from 'axios';
+// import { json } from 'react-router-dom';
 
 // const url = '52.78.149.75:8080';
 
@@ -63,7 +64,10 @@ const SignUpPage = () => {
       // 주소 찾아넣기
       const response = await axios.post(
         `http://52.78.149.75:8080/users/create`,
-        JSON.stringify(user),
+        user,
+        {
+          'Content-Type': 'application/json',
+        },
       );
       console.log(response);
     } catch (error) {
