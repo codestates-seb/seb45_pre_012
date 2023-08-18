@@ -35,4 +35,10 @@ public class AnswerService {
     public List<Answers> findAll() {
         return repository.findAll();
     }
+
+    public String deleteAll() {
+        repository.deleteAll();
+        return "전부삭제";
+    }
+
 }

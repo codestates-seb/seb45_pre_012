@@ -65,4 +65,10 @@ public class AnswerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete")
+    public String deleteAll() {
+        String s = service.deleteAll();
+        return s;
+    }
+
 }
