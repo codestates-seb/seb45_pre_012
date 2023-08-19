@@ -26,7 +26,8 @@ public class AnswerServiceImpl implements AnswerService {
         Question question = questionRepository.findById(questionId).orElseThrow();
         question.setAnswers(question.getAnswers() + 1);
 
-        Answer answer = mapper.answerPostDTOtoAnswer(answerPostDTO);
+        Answer answer = new Answer();
+        answer.setAnswerContent(answerPostDTO.getAnswerContent());
         answer.setQuestion(question); // Answer 엔티티 생성 및 연결
 
         Answer createdAnswer = answerRepository.save(answer);
