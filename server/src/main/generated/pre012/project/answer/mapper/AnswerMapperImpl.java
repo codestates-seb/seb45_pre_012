@@ -8,10 +8,11 @@ import pre012.project.answer.dto.AnswerPatchDTO;
 import pre012.project.answer.dto.AnswerPostDTO;
 import pre012.project.answer.dto.AnswerResponseDTO;
 import pre012.project.answer.entity.Answer;
+import pre012.project.question.entity.Question;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-18T02:16:46+0900",
+    date = "2023-08-20T02:51:17+0900",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 11.0.8 (Oracle Corporation)"
 )
 @Component
@@ -52,10 +53,12 @@ public class AnswerMapperImpl implements AnswerMapper {
 
         AnswerResponseDTO answerResponseDTO = new AnswerResponseDTO();
 
+        answerResponseDTO.setQuestionId( answerQuestionQuestionId( answer ) );
         answerResponseDTO.setAnswerId( answer.getAnswerId() );
         answerResponseDTO.setAnswerContent( answer.getAnswerContent() );
         answerResponseDTO.setCreatedDate( answer.getCreatedDate() );
         answerResponseDTO.setLastModifiedDate( answer.getLastModifiedDate() );
+        answerResponseDTO.setLiked( answer.isLiked() );
 
         return answerResponseDTO;
     }
@@ -72,5 +75,20 @@ public class AnswerMapperImpl implements AnswerMapper {
         }
 
         return list;
+    }
+
+    private Long answerQuestionQuestionId(Answer answer) {
+        if ( answer == null ) {
+            return null;
+        }
+        Question question = answer.getQuestion();
+        if ( question == null ) {
+            return null;
+        }
+        Long questionId = question.getQuestionId();
+        if ( questionId == null ) {
+            return null;
+        }
+        return questionId;
     }
 }

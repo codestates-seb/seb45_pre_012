@@ -8,10 +8,14 @@ import pre012.project.answer.dto.AnswerResponseDTO;
 import pre012.project.answer.entity.Answer;
 import pre012.project.answer.mapper.AnswerMapper;
 import pre012.project.answer.repository.AnswerRepository;
+import pre012.project.exception.BusinessLogicException;
+import pre012.project.exception.ExceptionCode;
 import pre012.project.question.entity.Question;
 import pre012.project.question.repository.QuestionRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @RequiredArgsConstructor
@@ -47,5 +51,24 @@ public class AnswerServiceImpl implements AnswerService {
         if (answer != null) {
             answerRepository.deleteById(answerId);
         }
+    }
+
+    @Override
+    public Answer findVerifiedAnswer(Long answerId) {
+        Optional<Answer> answer = answerRepository.findById(answerId);
+        Answer findAnswer = answer.orElseThrow(() -> new BusinessLogicException(ExceptionCode.ANSWER_NOT_FOUND));
+        return findAnswer;
+    }
+
+    @Override
+    public Answer getAnswer(Long answerId) {
+        Answer answer = answerRepository.findById(answerId).orElseThrow(NullPointerException::new);
+        return answer;
+    }
+
+    @Override
+    public List<AnswerResponseDTO> getAllAnswers() {
+        List<Answer> answers = answerRepository.findAll();
+        return mapper.answerListToAnswerResponseDTOList(answers);
     }
 }
