@@ -11,7 +11,7 @@ import pre012.project.answer.entity.Answer;
 import pre012.project.answer.mapper.AnswerMapper;
 import pre012.project.answer.service.AnswerService;
 import pre012.project.like.service.LikeService;
-import pre012.project.question.utils.UriCreator;
+import pre012.project.utils.UriCreator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

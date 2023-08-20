@@ -1,7 +1,6 @@
 package pre012.project.question.service;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pre012.project.answer.entity.Answer;
 import pre012.project.question.entity.Question;
@@ -22,5 +21,7 @@ public interface QuestionService {
 
     void deleteQuestion(Long questionId);
 
-    List<Answer> getQuestionAnswers(Question question);
+    List<Answer> getAnswersForQuestion(Question question);
+
+    Question findExistsQuestion(Long questionId);
 }
