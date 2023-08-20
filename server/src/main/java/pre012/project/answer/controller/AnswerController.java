@@ -7,18 +7,24 @@ import org.springframework.web.bind.annotation.*;
 import pre012.project.answer.dto.AnswerPatchDTO;
 import pre012.project.answer.dto.AnswerPostDTO;
 import pre012.project.answer.dto.AnswerResponseDTO;
+import pre012.project.answer.entity.Answer;
+import pre012.project.answer.mapper.AnswerMapper;
 import pre012.project.answer.service.AnswerService;
+import pre012.project.like.service.LikeService;
 import pre012.project.question.utils.UriCreator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/questions/{question_id}/answers")
 public class AnswerController {
     private final AnswerService answerService;
+    private final LikeService likeService;
+    private final AnswerMapper answerMapper;
 
     // 답변 등록
     @PostMapping
@@ -47,5 +53,24 @@ public class AnswerController {
                                        @PathVariable("answer_id") @Positive Long answerId) {
         answerService.deleteAnswer(answerId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    // 채택 등록 (true)
+    @PostMapping("/{answer_id}/like")
+    public ResponseEntity liked(@PathVariable("question_id") @Positive Long questionId,
+                                @PathVariable("answer_id") @Positive Long answerId) {
+        Answer likedAnswer = likeService.createLike(answerId, questionId);
+        AnswerResponseDTO answerResponseDTO = answerMapper.answerToAnswerResponseDTO(likedAnswer);
+        answerResponseDTO.setLiked(true);
+        return new ResponseEntity(answerResponseDTO, HttpStatus.OK);
+    }
+
+    // 채택 삭제 (false)
+    @DeleteMapping("/{answer_id}/like")
+    public ResponseEntity unLiked(@PathVariable("question_id") @Positive Long questionId,
+                                  @PathVariable("answer_id") @Positive Long answerId) {
+        Answer unLikedAnswer = likeService.deleteLike(answerId, questionId);
+        AnswerResponseDTO answerResponseDTO = answerMapper.answerToAnswerResponseDTO(unLikedAnswer);
+        return new ResponseEntity(answerResponseDTO, HttpStatus.OK);
     }
 }
