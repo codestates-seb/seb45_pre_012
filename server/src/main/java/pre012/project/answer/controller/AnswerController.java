@@ -47,6 +47,22 @@ public class AnswerController {
         return new ResponseEntity(answer, HttpStatus.OK);
     }
 
+    // answer_id 로 답변 조회
+    @GetMapping("/{answer_id}")
+    public ResponseEntity getAnswer(@PathVariable("question_id") @Positive Long questionId,
+                                    @PathVariable("answer_id") @Positive Long answerId) {
+        Answer answer = answerService.getAnswer(answerId);
+        AnswerResponseDTO answerResponseDTO = answerMapper.answerToAnswerResponseDTO(answer);
+        return new ResponseEntity(answerResponseDTO, HttpStatus.OK);
+    }
+
+    // question_id 에 달린 모든 답변 조회
+    @GetMapping
+    public ResponseEntity<List<AnswerResponseDTO>> getAllAnswers(@PathVariable("question_id") @Positive Long questionId) {
+        List<AnswerResponseDTO> answers = answerService.getAllAnswers();
+        return new ResponseEntity<>(answers, HttpStatus.OK);
+    }
+
     // 답변 삭제
     @DeleteMapping("/{answer_id}")
     public ResponseEntity deleteAnswer(@PathVariable("question_id") @Positive Long questionId,
