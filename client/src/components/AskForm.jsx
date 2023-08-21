@@ -2,6 +2,9 @@ import './AskForm.css';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
 
 function AskFormHeader() {
   return (
@@ -12,7 +15,56 @@ function AskFormHeader() {
     </div>
   );
 }
+
 function AskFormBody() {
+  // const navigate = useNavigate();
+  const [title, setTitle] = useState('');
+  const [details, setDetails] = useState('');
+  const [tag, setTag] = useState('Select tag');
+
+  const ask = {
+    title: title,
+    details: details,
+    tag: tag,
+  };
+
+  //axios 사용시 아래 주석 해제
+  const data = JSON.stringify(ask);
+
+  async function onsSubmitClickHandler() {
+    if (title !== '' && details !== '' && tag !== 'Select tag') {
+      console.log('ask등록 시도');
+      console.log(ask);
+      try {
+        const response = await axios.post(
+          `http://52.78.149.75:8080//questions/ask `,
+          data,
+          {
+            'Content-Type': 'application/json',
+          },
+        );
+        console.log(response);
+
+        //질문 등록 후 url 이동
+        // navigate('/');
+      } catch (error) {
+        console.error(error);
+        alert('회원가입에 실패했습니다.');
+      }
+    } else {
+      alert('입력하지 않은 칸이 존재합니다. 모든 정보를 입력해주세요');
+    }
+  }
+
+  function onChangeTitleHandler(e) {
+    setTitle(e.target.value);
+  }
+  function onChangeDetailsHandler(e) {
+    setDetails(e.target.value);
+  }
+  function onChangeTagHandler(e) {
+    setTag(e.target.value);
+  }
   return (
     <div className="askform_body_container">
       <div className="askform_body">
@@ -57,7 +109,7 @@ function AskFormBody() {
         </div>
         <div className="ask-form">
           <Form>
-            <Card className="mt-3">
+            <Card className="mt-3 ask-card">
               <Form.Group className="mb-3 mt-3" style={{ width: '90%' }}>
                 <Form.Label> Title</Form.Label>
                 <br />
@@ -70,13 +122,15 @@ function AskFormBody() {
                   placeholder="title"
                   className="mt-2"
                   style={{ width: '90%' }}
+                  value={title}
+                  onChange={onChangeTitleHandler}
                 />
                 {/* 폼 유효성 검사.. 구현 가능하면 하기! */}
                 {/* <Button variant="primary">Next</Button> */}
               </Form.Group>
             </Card>
 
-            <Card className="mt-3">
+            <Card className="mt-3 ask-card">
               <Form.Group className="mb-3 mt-3" style={{ width: '90%' }}>
                 <Form.Label>What are the details of your problem?</Form.Label>
                 <br />
@@ -89,11 +143,13 @@ function AskFormBody() {
                   placeholder="introduce"
                   className="mt-2"
                   style={{ width: '90%' }}
+                  value={details}
+                  onChange={onChangeDetailsHandler}
                 />
               </Form.Group>
             </Card>
 
-            <Card className="mt-3">
+            <Card className="mt-3 ask-card">
               <Form.Group
                 className="mb-3  mt-3"
                 style={{ width: '90%' }}
@@ -109,20 +165,23 @@ function AskFormBody() {
                   aria-label="Default select example"
                   className="mt-2"
                   style={{ width: '50%' }}
+                  onChange={onChangeTagHandler}
+                  value={tag}
                 >
                   <option>Select tag</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="Java">Java</option>
+                  <option value="JavaScript">JavaScript</option>
+                  <option value="Spring Boot">Spring Boot</option>
+                  <option value="React">React</option>
                 </Form.Select>
               </Form.Group>
             </Card>
-            {/* 동의..? 느낌의 checkbox가 있는데... */}
-            {/* <Form.Group
-              className="mb-3"
-              controlId="formBasicCheckbox"
-            ></Form.Group> */}
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="button"
+              className="mt-3 mb-3"
+              onClick={onsSubmitClickHandler}
+            >
               Submit
             </Button>
           </Form>
@@ -149,10 +208,15 @@ function TipCards() {
 
   const tipList = tipContents.map((item, index) => {
     return (
-      <Card border="primary" key={index} style={{ width: '100%' }}>
-        <Card.Header>writing tip {index + 1}</Card.Header>
+      <Card
+        border="primary"
+        key={index}
+        style={{ width: '100%' }}
+        className="mb-3"
+      >
+        <Card.Header> 💡 writing tip {index + 1}</Card.Header>
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
+          <Card.Title className="h6">{item.title}</Card.Title>
           <Card.Text>{item.text}</Card.Text>
         </Card.Body>
       </Card>

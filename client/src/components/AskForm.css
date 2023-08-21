@@ -1,11 +1,13 @@
-.askform_container div{
-  margin: 0 auto;
-}
+/* .askform_container div{
+   margin: 0 auto; 
+} */
 
 .askform_container .askform_title{
   padding: 40px 0;
 }
-
+.askform_header_container{
+  margin-left: 5%;
+}
 
 .askform_body_container{
   display: flex;
@@ -16,6 +18,38 @@
   font-size: small;
 }
 
-.askform_body {
-  margin :0
+.header_card_container .card {
+  font-size: small;
+  border-color: #0d6efd;
+  background-color: #0d6dfd28;
 }
+
+.askform_body {
+  margin: 0 5%;
+  flex-grow: 7;
+}
+
+.ask-tip-container{
+  flex-grow: 3;
+  margin: 0 3%;
+}
+
+.ask-tip-container .card-header{
+  background-color: #0d6dfd28;
+}
+
+.ask-tip-container p{
+  font-size: small;
+}
+.ask-tip-container .card-title{
+  font-weight: bold;
+}
+
+.ask-form .ask-card{
+  border-color: rgba(0, 0, 0, 0.616)
+}
+
+.ask-card div{
+  margin: 0 auto;
+}
+
