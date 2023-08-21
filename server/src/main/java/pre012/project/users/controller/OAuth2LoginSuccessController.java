@@ -15,7 +15,7 @@ public class OAuth2LoginSuccessController {
     @Autowired
     private UsersService usersService;
 
-    @GetMapping("/user")
+    @GetMapping("/user") // :8080/user, 소셜 회원가입
     public String loginSuccess(@AuthenticationPrincipal OAuth2User oauth2User, Model model) {
         if (oauth2User == null) {
             return "redirect:/login"; // 구글 로그인창으로 리다이렉트 되기로 예상.
@@ -32,6 +32,6 @@ public class OAuth2LoginSuccessController {
         }
 
         model.addAttribute("user", users);
-        return "user";
+        return "user"; // 로그인 후 메인페이지로 가는 로직. 파일 이름을 수정해야함.
     }
 }

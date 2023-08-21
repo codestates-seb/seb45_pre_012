@@ -40,7 +40,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login") // 리퀘스트 매핑이 듣지않음. :8080/login으로 매핑됨. 소셜로그인 요청
     public ResponseEntity<String> loginUser(@AuthenticationPrincipal OAuth2User oauth2User) {
         String provider = oauth2User.getName();
         String providerId = oauth2User.getAttribute("sub");
@@ -52,8 +52,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패");
         }
     }
-
-
 
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpServletRequest request, HttpServletResponse response) {
