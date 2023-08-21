@@ -30,7 +30,7 @@ public class Answer {
     private LocalDateTime lastModifiedDate;
 
     @Column
-    private boolean liked; // 채택 여부
+    private Boolean liked; // 채택 여부
 
     @ManyToOne
     @JoinColumn(name = "question_id")
