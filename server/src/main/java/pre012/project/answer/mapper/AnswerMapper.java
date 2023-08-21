@@ -11,10 +11,10 @@ import pre012.project.answer.entity.Answer;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-@Component
 public interface AnswerMapper {
     Answer answerPostDTOtoAnswer(AnswerPostDTO answerPostDTO);
     Answer answerPatchDTOtoAnswer(AnswerPatchDTO answerPatchDTO);
+    @Mapping(target = "questionId", source = "question.questionId")
     AnswerResponseDTO answerToAnswerResponseDTO(Answer answer);
     List<AnswerResponseDTO> answerListToAnswerResponseDTOList(List<Answer> answerList);
 }
