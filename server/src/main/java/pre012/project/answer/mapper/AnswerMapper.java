@@ -13,7 +13,6 @@ import java.util.List;
 public interface AnswerMapper {
     Answer answerPostDTOtoAnswer(AnswerPostDTO answerPostDTO);
     Answer answerPatchDTOtoAnswer(AnswerPatchDTO answerPatchDTO);
-    @Mapping(target = "questionId", source = "question.questionId")
     AnswerResponseDTO answerToAnswerResponseDTO(Answer answer);
     List<AnswerResponseDTO> answerListToAnswerResponseDTOList(List<Answer> answerList);
 }
