@@ -3,6 +3,7 @@ package pre012.project.answer.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import pre012.project.like.entity.Like;
 import pre012.project.question.entity.Question;
 
 import javax.persistence.*;
@@ -28,9 +29,16 @@ public class Answer {
     @Column
     private LocalDateTime lastModifiedDate;
 
+    @Column
+    private boolean liked; // 채택 여부
+
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
+
+    @OneToOne(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private Like like;
+
 
     // 질문 생성 날짜 갱신 메서드
     @PrePersist

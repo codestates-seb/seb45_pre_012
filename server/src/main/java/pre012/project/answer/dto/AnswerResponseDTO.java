@@ -14,4 +14,5 @@ public class AnswerResponseDTO {
     private LocalDateTime createdDate;
     private LocalDateTime lastModifiedDate;
     private String userName;
+    private boolean liked; // 추천 여부
 }

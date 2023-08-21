@@ -34,6 +34,9 @@ public class Question {
     private Integer answers; // 답변 개수
 
     @Column
+    private boolean liked;
+
+    @Column
     private LocalDateTime createdDate;
 
     @Column

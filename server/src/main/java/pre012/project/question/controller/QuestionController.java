@@ -17,7 +17,7 @@ import pre012.project.question.dto.QuestionResponseDTO;
 import pre012.project.question.entity.Question;
 import pre012.project.question.mapper.QuestionMapper;
 import pre012.project.question.service.QuestionService;
-import pre012.project.question.utils.UriCreator;
+import pre012.project.utils.UriCreator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -60,16 +60,19 @@ public class QuestionController {
         return new ResponseEntity<>(questionResponseDTOList, HttpStatus.OK);
     }
 
-    // 특정 id로 질문 조회
+    // question_id 로 질문 조회
     @GetMapping("/{question_id}")
     public ResponseEntity getQuestion(@PathVariable("question_id") @Positive Long questionId) {
-        // 해당 질문에 달린 답변도 함께 조회
+        // (1), (2) 방법 중 더 좋은 방법 택 1
+
+        // (1) question_id 조회
 //        Question question = questionService.getQuestion(questionId);
 //        QuestionResponseDTO questionResponseDTO = questionMapper.questionToQuestionResponseDTO(question);
 //        return new ResponseEntity(questionResponseDTO, HttpStatus.OK);
 
+        // (2) question_id 에 달린 질문들도 함께 조회
         Question question = questionService.getQuestion(questionId);
-        List<Answer> answerList = questionService.getQuestionAnswers(question);
+        List<Answer> answerList = questionService.getAnswersForQuestion(question);
 
         QuestionResponseDTO questionResponseDTO = questionMapper.questionToQuestionResponseDTO(question);
         List<AnswerResponseDTO> answerResponseDTOList = answerMapper.answerListToAnswerResponseDTOList(answerList);
