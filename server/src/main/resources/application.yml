@@ -20,6 +20,6 @@ spring:
           google:
             client-id: 550829219732-pgujqpprubj36trf9pdgebe4qd3rctso.apps.googleusercontent.com
             client-secret: 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
-            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            redirect-uri: http://ec2-52-78-149-75.ap-northeast-2.compute.amazonaws.com/login/oauth2/code/google
 logging.level:
   org.hibernate.SQL: debug
