@@ -8,24 +8,81 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { useState } from 'react';
 import axios from 'axios';
+// import { json } from 'react-router-dom';
+
+// const url = '52.78.149.75:8080';
 
 const SignUpPage = () => {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const user = {
+    email: email,
+    password: password,
+    userName: displayName,
+  };
+
+  const data = JSON.stringify(user);
+
+  // 1.백엔드 분들께 cors 오류 해결 코드 작업 하셨는지 여쭤보기...
+  // 안하셨다면 package.json에 proxy 에 url .. 추가 작업..!
+  // //package.json
+  // {
+  //   ...,
+  //   "proxy": "https://prepro012.s3-website.ap-northeast-2.amazonaws.com",
+  //   ...,
+  // }
+
+  // 이 부분 넣고 다시 실험
+
+  // 1번 실패시..? 아래 작업 후 실험
+  //   프론트엔드 작업
+  //  axios 옵션에 withCredentials: true 추가
+  // const handleLogin = () => {
+  //   axios.post(`${url}/users/create`,
+  //     data,
+  //     { withCredentials: true }
+  //   ).then(response => {
+  //     console.log(response);
+  //     console.log(response.data);
+  //   })
+  // }
+
+  // 백엔드 작업
+  //  settings 파일에 CORS_ALLOW_CREDENTIALS 설정을 true로 바꾼다.
+  //  // settings.py
+  //  CORS_ALLOW_CREDENTIALS = True
+
   async function onSubmitHandler() {
+    console.log(data);
+
+    // 아래 둘 중 하나의 방법으로 post하기
+    // 1. 단축 axios (?)
+    // 동기 함수로 사용시 onSubmitHandler앞에 async 붙이기
     try {
       // 주소 찾아넣기
-      const response = await axios.post('52.78.149.75:8080/users/create', {
-        displayName: displayName,
-        email: email,
-        password: password,
-      });
+      const response = await axios.post(
+        `http://52.78.149.75:8080/users/create`,
+        user,
+        {
+          'Content-Type': 'application/json',
+        },
+      );
       console.log(response);
     } catch (error) {
       console.error(error);
     }
+
+    // 2. 단축이 아닌 axios
+    // axios
+    //   .post(`${url}/users/create`, data)
+    //   .then((response) => {
+    //     console.log('success:', response);
+    //   })
+    //   .catch((error) => {
+    //     console.log('error', error);
+    //   });
   }
 
   function onChangedisplayNameHandler(e) {
