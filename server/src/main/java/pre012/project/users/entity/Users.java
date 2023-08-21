@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "`users`")
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,8 +17,8 @@ public class User {
     private String email;
     private String password;
     private String userName;
-    private String socialProvider;
-    private String providerId;
+    private String socialProvider; // = 구글 , 깃허브 로 로그인이 가능하다 하면, 구글 로그인시 구글..~ 이런식으로
+    private String providerId; //
 
     public void setSocialProvider(String provider, String providerId) {
         this.socialProvider = provider;
