@@ -26,9 +26,6 @@ public class UserController {
         return ResponseEntity.ok("회원가입 성공");
     }
 
-
-
-
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody User user) {
         if (userService.authenticateUser(user.getEmail(), user.getPassword())) {
@@ -51,8 +48,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("로그인 실패");
         }
     }
-
-
 
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpServletRequest request, HttpServletResponse response) {
