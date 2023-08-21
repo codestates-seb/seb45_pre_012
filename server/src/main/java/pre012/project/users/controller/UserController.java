@@ -64,7 +64,7 @@ public class UserController {
         return ResponseEntity.ok("로그아웃 성공");
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<String> deleteUser(@RequestBody Map<String, String> request) {
         String email = request.get("email");
         String password = request.get("password");
