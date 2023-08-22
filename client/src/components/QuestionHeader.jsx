@@ -1,10 +1,17 @@
-import { Card, Button, Row, Col } from 'react-bootstrap';
+import { Card, Row } from 'react-bootstrap';
 import './QuestionHeader.css';
-import HomeFilterBtn from './HomeFilterBtn.jsx';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import BaseHeader from './BaseHeader.jsx';
+import QuestionMemo from './QuestionMemo.jsx';
 
 const QuestionHeader = () => {
+  // eslint-disable-next-line no-unused-vars
   const [homeFilter, setHomeFilter] = useState(0);
+  const navigate = useNavigate();
+  const askQuestionBtnClick = () => {
+    navigate('/AskQuestion');
+  };
   const cardContents = [
     {
       id: 'cardContents1',
@@ -27,36 +34,68 @@ const QuestionHeader = () => {
         ' Export sheets to new file causes formula REF error back to original file4',
     },
   ];
-  const HomeFilterBtnClick = (idx) => {
-    setHomeFilter(idx);
-  };
+  // const HomeFilterBtnClick = (idx) => {
+  //   setHomeFilter(idx);
+  // };
 
   return (
     <>
-      <Row className="d-flex align-items-center justify-content-center mt-5">
-        <Col lg={9}>
-          <Card>
-            <Card.Body className="d-flex flex-column">
-              <Card.Title className="text_lg d-flex">
-                {cardContents[homeFilter].content}
-                <Button variant="primary ml_5_btn" size="lg">
-                  Ask Question
-                </Button>
-              </Card.Title>
-              <Card.Subtitle className="d-flex">
-                <Card.Text className="mr_5_cardtext">Asked today</Card.Text>
-                <Card.Text className="mr_5_cardtext">Modifed today</Card.Text>
-                <Card.Text className="mr_5_cardtext">Viewed 2 times</Card.Text>
-              </Card.Subtitle>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <HomeFilterBtn
-        homeFilter={homeFilter}
-        setHomeFilter={setHomeFilter}
-        HomeFilterBtnClick={HomeFilterBtnClick}
-      />
+      <div className="question_page_container">
+        <BaseHeader />
+        <Row className="question_header_container">
+          <div className="content_container">
+            <div className="content_left"></div>
+            <div className="question_section">
+              <div className="question_title_container">
+                <Card className="question_title_card">
+                  <Card.Body className="d-flex flex-column">
+                    <Card.Title className="text_lg d-flex">
+                      {cardContents[homeFilter].content}
+                      <button
+                        className="ask_question_btn"
+                        onClick={askQuestionBtnClick}
+                      >
+                        Ask Question
+                      </button>
+                    </Card.Title>
+                    <Card.Subtitle className="d-flex">
+                      <Card.Text className="mr_5_cardtext">
+                        Asked
+                        <span className="card_text_black">
+                          &nbsp;&nbsp;today
+                        </span>
+                      </Card.Text>
+                      <Card.Text className="mr_5_cardtext">
+                        Modified
+                        <span className="card_text_black">
+                          &nbsp;&nbsp;today
+                        </span>
+                      </Card.Text>
+                      <Card.Text className="mr_5_cardtext">
+                        Viewed
+                        <span className="card_text_black">
+                          &nbsp;&nbsp;2 times
+                        </span>
+                      </Card.Text>
+                    </Card.Subtitle>
+                  </Card.Body>
+                </Card>
+              </div>
+              <div className="question_title_bottom">
+                <div className="bottom_left"></div>
+                <div className="bottom_right">
+                  <QuestionMemo />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Row>
+        {/* <HomeFilterBtn
+          homeFilter={homeFilter}
+          setHomeFilter={setHomeFilter}
+          HomeFilterBtnClick={HomeFilterBtnClick}
+        /> */}
+      </div>
     </>
   );
 };
