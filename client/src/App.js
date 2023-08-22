@@ -15,7 +15,7 @@ import Footer from './components/Footer.jsx';
 
 import SideMenu from './components/SideMenu';
 import Header from './components/Header';
-import CardComponent from './components/CardComponent';
+import CardList from './components/CardList';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Header></Header>
           <div style={{ display: 'flex' }}>
             <SideMenu></SideMenu>
-            <CardComponent />
+            <CardList />
           </div>
         </div>
         <Routes>

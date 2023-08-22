@@ -12,12 +12,12 @@ const CardComponent = () => {
 
   useEffect(() => {
     axios
-      .get('http://52.78.149.75:8080/questions?page=1')
+      .get('http://52.78.149.75:8080/questions')
       .then((response) => {
         setQuestions(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching questions:', error);
+        console.error('Error:', error);
       });
   }, []);
 
@@ -46,8 +46,8 @@ const CardComponent = () => {
   return (
     <div>
       {questions.map((question) => (
-        <Card className="m-4" key={question.id}>
-          <Card.Body>
+        <Card className="m-3" key={question.id}>
+          <Card.Body className="w-100">
             <div className="d-flex">
               <div>
                 <span>{question.upvotes} votes</span> <br />
