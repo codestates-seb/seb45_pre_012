@@ -1,5 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Login from './pages/Login.jsx';
@@ -13,21 +15,28 @@ import Footer from './components/Footer.jsx';
 
 import SideMenu from './components/SideMenu';
 import Header from './components/Header';
+import CardComponent from './components/CardComponent';
 
 function App() {
   return (
-    <Router>
-      <div className="App"></div>
-      <Header></Header>
-      <SideMenu></SideMenu>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/question" element={<Question />} />
-        <Route path="/signup" element={<SignUpPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Header></Header>
+          <div style={{ display: 'flex' }}>
+            <SideMenu></SideMenu>
+            <CardComponent />
+          </div>
+        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/question" element={<Question />} />
+          <Route path="/signup" element={<SignUpPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </Provider>
   );
 }
 
