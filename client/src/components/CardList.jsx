@@ -6,8 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import './CardList.css';
 import axios from 'axios';
 const CardList = () => {
-  const cardCount = 10;
-  const cardArray = Array.from({ length: cardCount }, (_, index) => index);
   const navigate = useNavigate();
   const askQuestionBtnClick = () => {
     navigate('/askquestion');
@@ -31,7 +29,7 @@ const CardList = () => {
       <button className="ask_question_btn" onClick={askQuestionBtnClick}>
         Ask Question
       </button>
-      {cardArray.map((question) => (
+      {questions.map((question) => (
         <CardComponent key={question.questionId} question={question} />
       ))}
     </div>
