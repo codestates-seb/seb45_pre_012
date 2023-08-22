@@ -44,7 +44,7 @@ const CardComponent = () => {
   };
 
   return (
-    <div>
+    <div className="card_container">
       {questions.map((question) => (
         <Card className="m-3" key={question.id}>
           <Card.Body className="w-100">
@@ -70,7 +70,7 @@ const CardComponent = () => {
                 </Card.Text>
               </div>
             </div>
-            <div className="text-muted">{timeAgo(question.timestamp)}</div>
+            <div className="text-muted">{timeAgo(question.createdDate)}</div>
           </Card.Body>
         </Card>
       ))}

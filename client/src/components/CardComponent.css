@@ -1,12 +1,15 @@
+.card_container{
+  width: 1500px;
+  padding-top: 60px;
+}
 .card {
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 100%; /* 원하는 너비로 조절 */
+  width: 80%;
   margin-bottom: 20px;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
-
 .card-title {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -18,6 +21,7 @@
 }
 
 .question-title {
+  text-align: left;
   text-decoration: none;
   color: #212529;
   font-weight: bold;
@@ -32,6 +36,7 @@
 .text-muted {
   color: #6c757d;
   font-size: 0.8rem;
+  text-align: right;
 }
 
 .d-flex {
