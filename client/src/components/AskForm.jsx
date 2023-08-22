@@ -24,8 +24,8 @@ function AskFormBody() {
 
   const ask = {
     title: title,
-    details: details,
-    tag: tag,
+    content: details,
+    // tag: tag,
   };
 
   //axios 사용시 아래 주석 해제
@@ -37,7 +37,7 @@ function AskFormBody() {
       console.log(ask);
       try {
         const response = await axios.post(
-          `http://52.78.149.75:8080//questions/ask `,
+          `http://52.78.149.75:8080/questions/ask `,
           data,
           {
             'Content-Type': 'application/json',
