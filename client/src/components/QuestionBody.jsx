@@ -134,14 +134,7 @@ function QuestionBody(props) {
             {/* {props.content} */}
             <p className="question_text">
               {/* 하드코딩된 질문입니다. props로 받는 질문을 보여줘야합니다. */}
-              `0 I am attempting to write a server / client socket program and a
-              client GUI using JavaFX. My issue that i am facing is where the
-              GUI and socket connection doesn't run independently of each other
-              meaning when i run my client program the GUI is shown and the
-              socket connection doesn't occur. Then after closing the GUI window
-              the socket connection will initialize as it should've originally.
-              Also not greatly experienced with java in general and
-              javafx/socket programming, just trying to learn.`
+              {props.question.question.content}
             </p>
             <Answers />
             <AnswerForm />

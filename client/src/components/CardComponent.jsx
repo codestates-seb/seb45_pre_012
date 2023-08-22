@@ -21,25 +21,6 @@ const CardComponent = () => {
       });
   }, []);
 
-  //제목 클릭 시 조회수 증가
-  const handleTitleClick = async (questionId) => {
-    try {
-      await axios.put(`http://52.78.149.75:8080/questions/${questionId}`);
-      const updatedQuestions = questions.map((question) => {
-        if (question.questionId === questionId) {
-          return {
-            ...question,
-            views: question.views + 1,
-          };
-        }
-        return question;
-      });
-      setQuestions(updatedQuestions);
-    } catch (error) {
-      console.error('Error incrementing views:', error);
-    }
-  };
-
   //시간 변환 로직
   const timeAgo = (timestamp) => {
     const currentTime = new Date().getTime();
@@ -71,9 +52,8 @@ const CardComponent = () => {
               <div>
                 <Card.Title>
                   <Link
-                    to={`/question/${question.id}`}
+                    to={`/question/${question.questionId}`}
                     className="question-title"
-                    onClick={handleTitleClick}
                   >
                     {question.title}
                   </Link>
