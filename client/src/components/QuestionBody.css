@@ -1,0 +1,42 @@
+.question{
+  width: 50%;
+  display: flex;
+  margin: 0 5%;
+}
+
+.vete_container button{
+  border-radius: 40%;
+  background-color: rgb(243, 243, 243);
+  padding: 0.2rem;
+  margin: 15%;
+}
+
+.vete_container button:hover{
+  background-color: #ef8236;
+  border-color: #ef8236;
+}
+
+.vete_container button span{
+  font-size: 2rem;
+}
+
+.question_content{
+  margin: 0 2%;
+}
+
+.question_content .question_text{
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+}
+.answer_content h6{
+  font-weight: bold;
+}
+
+.answer_content p{
+  font-size: 14px;
+}
+
+.answer_form_group{
+  margin-left: 10px;
+}
