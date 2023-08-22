@@ -1,7 +1,7 @@
-import QuestionBody from '../components/QuestionBody.jsx';
+// import QuestionBody from '../components/QuestionBody.jsx';
 import Header from '../components/Header.jsx';
 import SideMenu from '../components/SideMenu.jsx';
-// import QuestionHeader from '../components/QuestionHeader.jsx';
+import QuestionHeader from '../components/QuestionHeader.jsx';
 
 import './Question.css';
 function Question() {
@@ -10,8 +10,8 @@ function Question() {
       <Header isHamburger={false} />
       <div className="question_detail_body">
         <SideMenu />
-        {/* <QuestionHeader /> */}
-        <QuestionBody />
+        <QuestionHeader />
+        {/* <QuestionBody /> */}
       </div>
     </>
   );

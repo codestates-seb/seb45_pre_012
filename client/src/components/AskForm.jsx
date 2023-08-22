@@ -49,7 +49,6 @@ function AskFormBody() {
         // navigate('/');
       } catch (error) {
         console.error(error);
-        alert('회원가입에 실패했습니다.');
       }
     } else {
       alert('입력하지 않은 칸이 존재합니다. 모든 정보를 입력해주세요');
