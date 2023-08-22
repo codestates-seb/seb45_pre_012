@@ -2,6 +2,8 @@
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import CardList from '../components/CardList.jsx';
+
+import './Home.css';
 function Home() {
   // return (
   //   <div>
@@ -13,7 +15,7 @@ function Home() {
 
   // 로그인 된 상태태
   return (
-    <div>
+    <div className="home">
       <Header />
       <CardList />
       <Footer />
