@@ -1,6 +1,6 @@
-/* .askform_container div{
-   margin: 0 auto; 
-} */
+.askform_container {
+   padding-top: 70px; 
+}
 
 .askform_container .askform_title{
   padding: 40px 0;

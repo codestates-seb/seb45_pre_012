@@ -241,7 +241,7 @@ const BaseHeader = () => {
               </div>
             </div>
           </Col>
-          <Col lg={5} className="mt-2">
+          <Col lg={6} className="mt-2">
             <Form className="search_form_container">
               <Form.Group controlId="search">
                 <SearchIcon className="search_icon" />

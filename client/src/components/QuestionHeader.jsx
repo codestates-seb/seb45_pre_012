@@ -2,7 +2,7 @@ import { Card, Row } from 'react-bootstrap';
 import './QuestionHeader.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BaseHeader from './BaseHeader.jsx';
+import QuestionBody from './QuestionBody.jsx';
 import QuestionMemo from './QuestionMemo.jsx';
 
 const QuestionHeader = () => {
@@ -10,7 +10,7 @@ const QuestionHeader = () => {
   const [homeFilter, setHomeFilter] = useState(0);
   const navigate = useNavigate();
   const askQuestionBtnClick = () => {
-    navigate('/AskQuestion');
+    navigate('/askquestion');
   };
   const cardContents = [
     {
@@ -41,7 +41,6 @@ const QuestionHeader = () => {
   return (
     <>
       <div className="question_page_container">
-        <BaseHeader />
         <Row className="question_header_container">
           <div className="content_container">
             <div className="content_left"></div>
@@ -82,7 +81,9 @@ const QuestionHeader = () => {
                 </Card>
               </div>
               <div className="question_title_bottom">
-                <div className="bottom_left"></div>
+                <div className="bottom_left">
+                  <QuestionBody />
+                </div>
                 <div className="bottom_right">
                   <QuestionMemo />
                 </div>
