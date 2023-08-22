@@ -29,7 +29,7 @@ function AskFormBody() {
   };
 
   //axios 사용시 아래 주석 해제
-  const data = JSON.stringify(ask);
+  // const data = JSON.stringify(ask);
 
   async function onsSubmitClickHandler() {
     if (title !== '' && details !== '' && tag !== 'Select tag') {
@@ -38,7 +38,7 @@ function AskFormBody() {
       try {
         const response = await axios.post(
           `http://52.78.149.75:8080/questions/ask `,
-          data,
+          ask,
           {
             'Content-Type': 'application/json',
           },
