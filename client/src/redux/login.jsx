@@ -20,8 +20,8 @@ const loginReducer = (state = initialState, action) => {
       return { ...state, status: 'Loading' };
     case LOGIN_FULFILLED:
       user = action.payload;
-      console.log(`Hello! ${user}`);
-      return { ...state, user, status: null };
+      console.log(user);
+      return { ...state, user: user, status: null };
     case LOGIN_REJECTED:
       return { ...state, status: 'Fail' };
     default:

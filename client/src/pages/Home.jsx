@@ -2,22 +2,27 @@
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import CardList from '../components/CardList.jsx';
-function Home() {
-  // return (
-  //   <div>
-  //     <BaseHeader />
-  //     test
-  //     <Footer />
-  //   </div>
-  // );
+import { getLocalStorage } from '../redux/localStorage.jsx';
+import BaseHeader from '../components/BaseHeader.jsx';
 
-  // 로그인 된 상태태
+function Home() {
+  const user = getLocalStorage();
+  console.log(user);
   return (
-    <div>
-      <Header />
-      <CardList />
-      <Footer />
-    </div>
+    <>
+      {user === null ? (
+        <div>
+          <BaseHeader />
+          <Footer />
+        </div>
+      ) : (
+        <div>
+          <Header />
+          <CardList />
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 
