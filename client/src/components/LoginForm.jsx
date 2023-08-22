@@ -1,25 +1,23 @@
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useState } from 'react';
+import './LoginForm.css';
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../redux/actions.jsx';
 
-const LoginForm = ({ setLoginState }) => {
+// eslint-disable-next-line react/prop-types
+const LoginForm = () => {
   const initialInfo = { email: '', password: '' };
   const [loginInfo, setLoginInfo] = useState(initialInfo);
   const [emptyEmail, setEmptyEmail] = useState(false);
   const [emptyPassword, setEmptyPassword] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
-  const [loginFailed, setLoginFailed] = useState(false);
-
-  // const LoginList = [
-  //   {
-  //     email: 'gudtn0506@gmail.com',
-  //     password: 'stackoverflow1!',
-  //   },
-  // ];
+  const [loginFailed] = useState(false);
+  const dispatch = useDispatch();
 
   const handleLogin = (email, password) => {
     const emailRegex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     const passwordRegex = /^[A-Za-z\d!@#$%^&*()_+~\-=]{8,40}$/;
 
     if (email === '') setEmptyEmail(true);
@@ -40,13 +38,13 @@ const LoginForm = ({ setLoginState }) => {
       setEmptyPassword(false);
       setInvalidEmail(true);
       setInvalidPassword(true);
-      setLoginState(true);
+      dispatch(loginAction({ email, password }));
       console.log('로그인 완료');
     }
   };
 
   return (
-    <Container>
+    <Container className="login_container">
       <Row fluid className="row justify-content-center">
         <Col lg={5} className="bg-white mt-2 mb-2 p-2 loginbox">
           <Form className="mt-2 p-3">
@@ -91,7 +89,7 @@ const LoginForm = ({ setLoginState }) => {
               {loginFailed ? <p>The email or password is incorrect.</p> : null}
             </Form.Group>
             <Button
-              className="w-100 btn-lg"
+              className="w-100 btn-lg login_btn"
               onClick={() => handleLogin(loginInfo.email, loginInfo.password)}
             >
               Login
