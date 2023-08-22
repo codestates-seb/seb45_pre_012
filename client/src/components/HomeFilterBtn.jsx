@@ -29,6 +29,8 @@ const HomeFilterBtn = ({ HomeFilterBtnClick, homeFilter }) => {
     }
   };
 
+  // 필터 버튼 누르면 컨텐츠가 순위대로 정렬되도록 업데이트. Home을 구현하는 사람과 맞춰봐야함.
+
   return (
     <ButtonGroup className="ml_5_btn_g">
       {HomeFilterBtnContent.map((homefilter, idx) => (

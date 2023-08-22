@@ -12,7 +12,7 @@ const SocialLogin = () => {
           </div>
           <Button
             fluid
-            className="w-100 btn-lg bg-white text-dark fs-6 border-dark p-2"
+            className="w-100 bg-white text-dark fs-6 border-dark social_login_btn"
           >
             <GoogleLogo />
             Log in with Google
