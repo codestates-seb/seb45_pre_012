@@ -1,14 +1,25 @@
-// eslint-disable-next-line import/no-unresolved
-import CardComponent from './CardComponent';
+import { useState, useEffect } from 'react';
+import CardComponent from './CardComponent.jsx';
+import axios from 'axios';
 
 const CardList = () => {
-  const cardCount = 10;
-  const cardArray = Array.from({ length: cardCount }, (_, index) => index);
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://52.78.149.75:8080/questions')
+      .then((response) => {
+        setQuestions(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   return (
     <div>
-      {cardArray.map((index) => (
-        <CardComponent key={index} />
+      {questions.map((question) => (
+        <CardComponent key={question.questionId} question={question} />
       ))}
     </div>
   );
