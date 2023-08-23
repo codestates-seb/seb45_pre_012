@@ -12,6 +12,7 @@
   position: fixed;
   background-color: #fff;
   width: 100%;
+  z-index: 9;
 }
 
 /* 헤더 로고 container 로고 크기 맞춰 봅니다아..*/
@@ -58,17 +59,17 @@
  }
 
 /* products 버튼 */
-.products-button{
-  width: 77px;
+.header-products-button.btn{
+  width: 70px;
   height: 30px;
-  font-size: 13px;
+  font-size: 12px;
   border-color: #fff;
-  border-radius: 50px;
+  border-radius: 40px;
   margin: 0.25rem;
 }
 
 /* products 버튼에 마우스 hover하는 경우 */
-.products-button:hover{
+.header-products-button.btn:hover{
   color: black;
   background-color: rgba(0, 0, 0, 0.1);
   border-color: #fff;
@@ -76,7 +77,7 @@
 
 
 /* products 버튼이 눌린 경우 */
-.products-button.isProductClicked{
+.header-products-button.isProductClicked.btn{
   color: #fff;
   background-color: #ef8236;
   border-color: #fff;
@@ -140,11 +141,12 @@
 }
 
 /* search input 스타일 */
-.form-control{
+.serch-container .form-control{
   position: relative;
   flex: 1 1 auto;
   width: 50vw;
   min-width: 0;
+  margin-top: 10px;
 }
 
 /* 아이콘 크기 */

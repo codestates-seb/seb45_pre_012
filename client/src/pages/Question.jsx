@@ -13,13 +13,16 @@ function Question() {
   // const questionId = params.questionId; // 2
 
   const [question, setQuestion] = useState({
-    questionId: null,
-    title: '',
-    content: '',
-    views: 0,
-    answers: 0,
-    createdDate: '',
-    lastModifiedDate: '',
+    answer: [],
+    question: {
+      questionId: null,
+      title: '',
+      content: '',
+      views: 0,
+      answers: 0,
+      createdDate: '',
+      lastModifiedDate: '',
+    },
   });
 
   useEffect(() => {
@@ -35,7 +38,7 @@ function Question() {
           console.error('Error:', error);
         });
     }
-  }, [questionId]);
+  }, []);
 
   return (
     <>

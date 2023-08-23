@@ -257,7 +257,7 @@ function Header(props) {
       <div className="products">
         <Button
           ref={productsModalRef}
-          className={`products-button  ${
+          className={`header-products-button ${
             isProductClicked ? 'isProductClicked' : ''
           }`}
           variant="outline-secondary"
