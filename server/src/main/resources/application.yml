@@ -1,8 +1,6 @@
-# ?? ?? ??
 server:
   port: 8080
 
-# database ?? ??
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,16 +12,14 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     enabled: true
-  profiles:
-    include: StackOverflow
 
-  # spring data jpa ??
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
-    show-sql: true # SQL ?? ??
+    show-sql: true
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
-      show_sql: true # SQL pretty print
+        format_sql: true
+      show_sql: true
