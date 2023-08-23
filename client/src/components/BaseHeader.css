@@ -1,0 +1,180 @@
+.header_text1{
+  font-size: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  color:black;
+  margin-top: 5px;
+}
+.header_text2{
+  font-size: 20px;
+  color:black;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 5px;
+}
+.header__Navbar{
+  width: 100%;
+ border-bottom: 2px solid rgb(226, 226, 226);
+ border-top: 4px solid rgb(255, 144, 132);
+}
+
+.logo_sprite{
+  margin-left: 30px;
+}
+
+.logo_btn:hover{
+  background-color: rgb(227, 227, 227);
+  color:white;
+}
+
+.logo_link{
+  text-decoration: none;
+}
+
+.header_link{
+  text-decoration: none;
+  color: rgb(90, 90, 90);
+  font-weight: 600;
+}
+.header_alink:hover{
+cursor: pointer;
+}
+
+.aboutBox{
+  width: 28%;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+
+
+.header_left_box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search_form_container{
+  position: relative;
+}
+.search_icon{
+  position: absolute;
+  left: 20px;
+  top:15px;
+}
+
+
+
+/* 아이콘 크기 */
+.header_container .material-symbols-outlined {
+  display: block;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.header_container .material-symbols-outlined:hover {
+  font-size: 1.5rem;
+  color: #000
+}
+
+.hamburger_container {
+  position: relative;
+}
+.hamburger_container .sidemenu-container{
+  background-color: #fff;
+  z-index: 1;
+  margin-top: 3px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.2);;
+  position: absolute;
+  top : 40px;
+  right : -60px;
+}
+
+
+/* 햄버거 아이콘 사이즈 지정 */
+.hamburger_container .sidemenu-container .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+/* 아이콘 span으로 들어와서 이 span 수직 중앙 정렬되도록 */
+.hamburger_container .sidemenu-container span:not(:first) {
+  display: table-cell;
+  padding-right: 3px;
+  text-align: left;
+  vertical-align: middle;
+}
+.hamburger_container .sidemenu-container span.color_ef8236 {
+  color:#ef8236
+}
+
+/* 선택된 a즉 Nav.Link 컴포넌트 스타일 */
+.hamburger_container .sidemenu-container .nav_container a.active{
+  color: rgba(0, 0, 0);
+  background-color:rgba(0, 0, 0, 0.1);
+  border-right:2px solid #ef8236;
+  font-weight: bold;
+}
+
+
+/* products Modal */
+
+.products-container{
+  z-index: 1;
+  margin-top: 6px;
+  position: absolute;
+  top : 50px;
+  right : -50px;
+}
+
+.products-container .card .list-group-item:hover{
+  background-color:rgba(0, 0, 0, 0.1); 
+}
+.products-container .card a.nav-link{
+  color: black;
+  padding: 0;
+}
+.products-container .card-body{
+  padding: 0;
+  text-align: left;
+}
+.products-container .card-title{
+  font-size: 13px;
+}
+.products-container .card-subtitle{
+  font-size: 11px;
+}
+
+/* products 버튼 */
+.products-button{
+  width: 77px;
+  height: 30px;
+  font-size: 17px;
+  border-color: #fff;
+  border-radius: 50px;
+  margin: 0.25rem;
+  border: none;
+  outline: none;
+  background-color: white;
+  list-style: none;
+}
+.forteams{
+  font-size: 13px;
+}
+
+/* products 버튼에 마우스 hover하는 경우 */
+.products-button:hover{
+  color: black;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #fff;
+}
+
+
+/* products 버튼이 눌린 경우 */
+.products-button.isProductClicked{
+  color: #fff;
+  background-color: #ef8236;
+  border-color: #fff;
+}
+
+.products{
+  position: relative;
+ }
