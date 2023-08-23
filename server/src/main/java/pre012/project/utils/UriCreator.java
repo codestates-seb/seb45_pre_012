@@ -1,4 +1,4 @@
-package pre012.project.question.utils;
+package pre012.project.utils;
 
 import org.springframework.web.util.UriComponentsBuilder;
 

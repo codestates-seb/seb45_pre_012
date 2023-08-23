@@ -3,14 +3,15 @@ package pre012.project.exception;
 import lombok.Getter;
 
 public enum ExceptionCode {
-    USER_NOT_FOUND(404, "User Not Found"),
-    QUESTION_NOT_FOUND(404, "QUESTION Not Found"),
-    ANSWER_NOT_FOUND(404, "ANSWER Not Found"),
-    COMMENT_NOT_FOUND(404, "COMMENT Not Found"),
-    ADOPTION_NOT_FOUND(404, "Adoption not found"),
-    USER_EXISTS(409, "User Exists"),
-    ADOPTION_EXISTS(409, "Adoption Exists"),
-    NOT_IMPLEMENTATION(501, "Not Implementation");
+    INVALID_SORT_PARAMETER(400, "INVALID SORT PARAMETER NAME"),
+    USER_NOT_FOUND(404, "USER NOT FOUND"),
+    QUESTION_NOT_FOUND(404, "QUESTION NOT FOUND"),
+    ANSWER_NOT_FOUND(404, "ANSWER NOT FOUND"),
+    COMMENT_NOT_FOUND(404, "COMMENT NOT FOUND"),
+    LIKE_NOT_FOUND(404, "LIKE NOT FOUND"),
+    USER_EXISTS(409, "USER EXISTS"),
+    LIKE_EXISTS(409, "LIKE EXISTS"),
+    NOT_IMPLEMENTATION(501, "NOT IMPLEMENTATION");
 
     @Getter
     private int status;

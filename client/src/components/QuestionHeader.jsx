@@ -1,39 +1,42 @@
+/* eslint-disable react/prop-types */
 import { Card, Row } from 'react-bootstrap';
 import './QuestionHeader.css';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QuestionBody from './QuestionBody.jsx';
 import QuestionMemo from './QuestionMemo.jsx';
 
-const QuestionHeader = () => {
+const QuestionHeader = (props) => {
   // eslint-disable-next-line no-unused-vars
-  const [homeFilter, setHomeFilter] = useState(0);
+  console.log(props.question);
+  console.log(props.questionId);
+  // const [homeFilter, setHomeFilter] = useState(0);
   const navigate = useNavigate();
   const askQuestionBtnClick = () => {
     navigate('/askquestion');
   };
-  const cardContents = [
-    {
-      id: 'cardContents1',
-      content:
-        'Export sheets to new file causes formula REF error back to original file',
-    },
-    {
-      id: 'cardContents2',
-      content:
-        ' Export sheets to new file causes formula REF error back to original file2',
-    },
-    {
-      id: 'cardContents3',
-      content:
-        ' Export sheets to new file causes formula REF error back to original file3',
-    },
-    {
-      id: 'cardContents4',
-      content:
-        ' Export sheets to new file causes formula REF error back to original file4',
-    },
-  ];
+  // const cardContents = [
+  //   {
+  //     id: 'cardContents1',
+  //     content:
+  //       'Export sheets to new file causes formula REF error back to original file',
+  //   },
+  //   {
+  //     id: 'cardContents2',
+  //     content:
+  //       ' Export sheets to new file causes formula REF error back to original file2',
+  //   },
+  //   {
+  //     id: 'cardContents3',
+  //     content:
+  //       ' Export sheets to new file causes formula REF error back to original file3',
+  //   },
+  //   {
+  //     id: 'cardContents4',
+  //     content:
+  //       ' Export sheets to new file causes formula REF error back to original file4',
+  //   },
+  // ];
   // const HomeFilterBtnClick = (idx) => {
   //   setHomeFilter(idx);
   // };
@@ -49,7 +52,7 @@ const QuestionHeader = () => {
                 <Card className="question_title_card">
                   <Card.Body className="d-flex flex-column">
                     <Card.Title className="text_lg d-flex">
-                      {cardContents[homeFilter].content}
+                      {props.question.question.title}
                       <button
                         className="ask_question_btn"
                         onClick={askQuestionBtnClick}
@@ -82,7 +85,10 @@ const QuestionHeader = () => {
               </div>
               <div className="question_title_bottom">
                 <div className="bottom_left">
-                  <QuestionBody />
+                  <QuestionBody
+                    question={props.question}
+                    questionId={props.questionId}
+                  />
                 </div>
                 <div className="bottom_right">
                   <QuestionMemo />

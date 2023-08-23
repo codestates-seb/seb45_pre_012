@@ -15,7 +15,8 @@ public class QuestionResponseDTO {
     private Long questionId;
     private String title;
     private String content;
-    private int views;
+    private Integer views;
+    private Integer answers;
     private LocalDateTime createdDate;
     private LocalDateTime lastModifiedDate;
 }
