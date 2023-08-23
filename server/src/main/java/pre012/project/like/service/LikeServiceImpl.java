@@ -1,6 +1,5 @@
 package pre012.project.like.service;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pre012.project.answer.entity.Answer;
@@ -24,10 +23,10 @@ public class LikeServiceImpl implements LikeService {
     private final QuestionService questionService;
 
     public Answer createLike(Long answerId, Long questionId) {
-        verifyExistsLike(questionId);
+        verifyExistsLike(questionId); // 이미 채택된 경우 예외 발생
 
         Question question = questionService.findExistsQuestion(questionId);
-        Answer answer = answerService.findVerifiedAnswer(answerId);
+        Answer answer = answerService.findExistsAnswer(answerId);
 
         question.setLiked(true);
         answer.setLiked(true);
@@ -42,10 +41,10 @@ public class LikeServiceImpl implements LikeService {
     }
 
     public Answer deleteLike(Long answerId, Long questionId) {
-        Like like = findExistsLike(questionId);
+        Like like = findExistsLike(questionId); // 채택이 존재하지 않을 경우 예외 발생
 
         Question question = questionService.findExistsQuestion(questionId);
-        Answer answer = answerService.findVerifiedAnswer(answerId);
+        Answer answer = answerService.findExistsAnswer(answerId);
 
         question.setLiked(false);
         answer.setLiked(false);

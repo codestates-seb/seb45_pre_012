@@ -12,7 +12,7 @@ import pre012.project.question.entity.Question;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-08-20T02:51:17+0900",
+    date = "2023-08-23T09:31:27+0900",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 11.0.8 (Oracle Corporation)"
 )
 @Component
@@ -58,7 +58,9 @@ public class AnswerMapperImpl implements AnswerMapper {
         answerResponseDTO.setAnswerContent( answer.getAnswerContent() );
         answerResponseDTO.setCreatedDate( answer.getCreatedDate() );
         answerResponseDTO.setLastModifiedDate( answer.getLastModifiedDate() );
-        answerResponseDTO.setLiked( answer.isLiked() );
+        if ( answer.getLiked() != null ) {
+            answerResponseDTO.setLiked( answer.getLiked() );
+        }
 
         return answerResponseDTO;
     }

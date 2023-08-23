@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import pre012.project.like.entity.Like;
 import pre012.project.question.entity.Question;
+import pre012.project.user.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,7 +31,11 @@ public class Answer {
     private LocalDateTime lastModifiedDate;
 
     @Column
-    private boolean liked; // 채택 여부
+    private Boolean liked; // 채택 여부
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User writer;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
@@ -38,7 +43,6 @@ public class Answer {
 
     @OneToOne(mappedBy = "question", cascade = CascadeType.REMOVE)
     private Like like;
-
 
     // 질문 생성 날짜 갱신 메서드
     @PrePersist

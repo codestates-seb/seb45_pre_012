@@ -8,6 +8,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pre012.project.answer.entity.Answer;
 import pre012.project.answer.repository.AnswerRepository;
+import pre012.project.exception.BusinessLogicException;
+import pre012.project.exception.ExceptionCode;
 import pre012.project.question.entity.Question;
 import pre012.project.question.repository.QuestionRepository;
 
@@ -41,32 +43,34 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question getQuestion(Long questionId) {
-        Question question = questionRepository.findById(questionId).orElseThrow(NullPointerException::new);
+        Question question = findExistsQuestion(questionId);
         question.setViews(question.getViews() + 1);
         return question;
     }
 
     @Override
-    public Question updateQuestion(Long questionId, Question question) {
-        return questionRepository.findById(questionId)
-                .map(findQuestion -> {
-                    Optional.ofNullable(question.getTitle()).ifPresent(findQuestion::setTitle);
-                    Optional.ofNullable(question.getContent()).ifPresent(findQuestion::setContent);
-                    return questionRepository.save(findQuestion);
-                })
-                .orElseThrow();
+    public Question updateQuestion(Long questionId, Question updatedQuestion) {
+        Question question = findExistsQuestion(questionId);
+        Optional.ofNullable(updatedQuestion.getTitle()).ifPresent(question::setTitle);
+        Optional.ofNullable(updatedQuestion.getContent()).ifPresent(question::setContent);
+        return questionRepository.save(question);
     }
 
     @Override
     public void deleteQuestion(Long questionId) {
-        Question question = questionRepository.findById(questionId).orElse(null);
-        if (question != null) {
-            questionRepository.deleteById(questionId);
-        }
+        Question question = findExistsQuestion(questionId);
+        questionRepository.deleteById(questionId);
     }
 
     @Override
-    public List<Answer> getQuestionAnswers(Question question) {
-        return answerRepository.findAllByQuestion(question);
+    public List<Answer> getAnswersForQuestion(Question question) {
+        return answerRepository.findByQuestion(question);
+    }
+
+    // 질문이 존재하는지 확인하는 메서드
+    @Override
+    public Question findExistsQuestion(Long questionId) {
+        Optional<Question> question = questionRepository.findById(questionId);
+        return question.orElseThrow(() -> new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
     }
 }

@@ -16,7 +16,7 @@ public interface AnswerService {
 
     void deleteAnswer(Long answerId);
 
-    Answer findVerifiedAnswer(Long answerId);
+    Answer findExistsAnswer(Long answerId);
 
     Answer getAnswer(Long answerId);
 
