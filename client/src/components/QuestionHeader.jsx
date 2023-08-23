@@ -9,6 +9,7 @@ import QuestionMemo from './QuestionMemo.jsx';
 const QuestionHeader = (props) => {
   // eslint-disable-next-line no-unused-vars
   console.log(props.question);
+  console.log(props.questionId);
   // const [homeFilter, setHomeFilter] = useState(0);
   const navigate = useNavigate();
   const askQuestionBtnClick = () => {
@@ -84,7 +85,10 @@ const QuestionHeader = (props) => {
               </div>
               <div className="question_title_bottom">
                 <div className="bottom_left">
-                  <QuestionBody question={props.question} />
+                  <QuestionBody
+                    question={props.question}
+                    questionId={props.questionId}
+                  />
                 </div>
                 <div className="bottom_right">
                   <QuestionMemo />

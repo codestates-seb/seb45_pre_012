@@ -45,7 +45,7 @@ function Question() {
       <Header isHamburger={false} />
       <div className="question_detail_body">
         <SideMenu />
-        <QuestionHeader question={question} />
+        <QuestionHeader question={question} questionId={questionId} />
         {/* <QuestionBody /> */}
       </div>
     </>

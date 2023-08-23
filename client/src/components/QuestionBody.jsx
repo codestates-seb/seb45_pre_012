@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 // import QuestionHeader from './QuestionHeader.jsx';
 import { Button, Form, Card } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './QuestionBody.css';
 
@@ -19,7 +19,8 @@ function VoteComponent(props) {
       <Button variant="light" onClick={onUpButtonClickHandler}>
         <span className="material-symbols-outlined">arrow_drop_up</span>
       </Button>
-      <div className="recommend-count">props.count</div>
+      {/* 기능 없음 */}
+      <div className="recommend-count">{0}</div>
       <Button variant="light" onClick={onDownButtonClickhandler}>
         <span className="material-symbols-outlined">arrow_drop_down</span>
       </Button>
@@ -29,19 +30,32 @@ function VoteComponent(props) {
 
 function Answers(props) {
   //하드코딩된 answerlist -> props로 받아오기
-  const answerList = [
-    '1 Read the JavaFX Application javadoc. See especially the launch method.The launch method does not return until the application has exited, either via a call to Platform.exit() or all of the application windows have been closed. So in this code the socket connection won’t startuntil the JavaFX platform exits. ',
-    'public static void main(String[] args) {Application.launch(ClientWindow.class, args); ClientSocket.startConnection();}',
-  ];
+  const [answerList, setAnswerList] = useState([]);
+
+  const questionId = props.questionId;
+  useEffect(() => {
+    console.log(questionId);
+    axios
+      .get(`http://52.78.149.75:8080/questions/${questionId}/answers`)
+      .then((response) => {
+        console.log('가져옴');
+        setAnswerList(response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, []);
+
+  console.log(answerList);
 
   return (
     <div className="answer">
       <div className="answer_content">
         {answerList.map((item, index) => {
           return (
-            <div key={item}>
+            <div key={item.answerId}>
               <h6>Answer {index + 1} </h6>
-              <p>{item}</p>
+              <p>{item.answerContent}</p>
             </div>
           );
         })}
@@ -50,15 +64,12 @@ function Answers(props) {
   );
 }
 
-function AnswerForm() {
+function AnswerForm(props) {
   const [answer, setAnswer] = useState('');
 
   const answerData = {
-    // user에 로그인한 유저..
-    user: 'user',
-    answer: answer,
+    answerContent: answer,
   };
-  const data = JSON.stringify(answerData);
 
   function onChangeAnswerHandler(e) {
     setAnswer(e.target.value);
@@ -66,12 +77,13 @@ function AnswerForm() {
 
   async function onSubmitAnswerHandler() {
     if (answer !== '') {
-      console.log('axios 넣기');
+      console.log('질문 등록 시도');
       try {
         // 주소 찾아넣기
         const response = await axios.post(
-          `http://52.78.149.75:8080/{??}`,
-          data,
+          `http://52.78.149.75:8080/questions/${props.questionId}/answers
+          `,
+          answerData,
           {
             'Content-Type': 'application/json',
           },
@@ -119,7 +131,7 @@ function AnswerForm() {
 
 function QuestionBody(props) {
   // props로 질문관련 데이터 전달 받아야함.
-
+  console.log(props.questionId);
   const [questionCount, setQuestionCount] = useState(0);
 
   return (
@@ -136,8 +148,11 @@ function QuestionBody(props) {
               {/* 하드코딩된 질문입니다. props로 받는 질문을 보여줘야합니다. */}
               {props.question.question.content}
             </p>
-            <Answers />
-            <AnswerForm />
+            <Answers
+              answerList={props.question.answer}
+              questionId={props.questionId}
+            />
+            <AnswerForm questionId={props.questionId} />
           </div>
         </div>
       </div>
