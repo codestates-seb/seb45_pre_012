@@ -57,7 +57,7 @@ public class AnswerController {
     }
 
     // question_id 에 달린 모든 답변 조회
-    @GetMapping
+    @GetMapping // /questions/{question_id}/answers
     public ResponseEntity<List<AnswerResponseDTO>> getAllAnswers(@PathVariable("question_id") @Positive Long questionId) {
         List<AnswerResponseDTO> answers = answerService.getAllAnswers();
         return new ResponseEntity<>(answers, HttpStatus.OK);

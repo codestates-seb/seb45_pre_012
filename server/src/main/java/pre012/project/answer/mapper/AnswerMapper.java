@@ -2,6 +2,7 @@ package pre012.project.answer.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 import pre012.project.answer.dto.AnswerPatchDTO;
 import pre012.project.answer.dto.AnswerPostDTO;
 import pre012.project.answer.dto.AnswerResponseDTO;
@@ -9,7 +10,8 @@ import pre012.project.answer.entity.Answer;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface AnswerMapper {
     Answer answerPostDTOtoAnswer(AnswerPostDTO answerPostDTO);
     Answer answerPatchDTOtoAnswer(AnswerPatchDTO answerPatchDTO);
