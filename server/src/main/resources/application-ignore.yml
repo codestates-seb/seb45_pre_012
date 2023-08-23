@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: jeonni
+    password: "stack!012"
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 550829219732-pgujqpprubj36trf9pdgebe4qd3rctso.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+jwt:
+  key: "asdjklhalsdjkhaljsdkhasdjkhasdjkalsdjkajsdkl123412344"
+  access-token-expiration-minutes: 30
+  refresh-token-expiration-minutes: 420
