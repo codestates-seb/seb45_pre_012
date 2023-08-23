@@ -18,8 +18,7 @@ public class Users {
 
     @Email
     private String email;
-
-    @Length(min = 4, max = 8)
+    
     private String password;
     private String userName;
     private String socialProvider; // = 구글 , 깃허브 로 로그인이 가능하다 하면, 구글 로그인시 구글..~ 이런식으로
