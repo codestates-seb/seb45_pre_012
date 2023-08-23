@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import pre012.project.answer.entity.Answer;
+import pre012.project.user.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -42,9 +43,9 @@ public class Question {
     @Column
     private LocalDateTime lastModifiedDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User writer;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList = new ArrayList<>();

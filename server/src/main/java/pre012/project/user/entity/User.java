@@ -2,8 +2,12 @@ package pre012.project.user.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import pre012.project.answer.entity.Answer;
+import pre012.project.question.entity.Question;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter

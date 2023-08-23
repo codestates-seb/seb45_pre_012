@@ -15,7 +15,6 @@ import pre012.project.user.entity.User;
 @RequiredArgsConstructor
 public class OAuth2LoginSuccessController {
     private final UserService userService;
-
     @GetMapping("/user")
     public String loginSuccess(@AuthenticationPrincipal OAuth2User oauth2User, Model model) {
         if (oauth2User == null) {
