@@ -1,6 +1,6 @@
 // actions.js
 import axios from 'axios';
-import { addLocalStorage, removeLocalStroage } from './localStorage.jsx';
+import { addLocalStorage, removeLocalStorage } from './localStorage.jsx';
 
 // Action Types
 export const LOG_OUT = 'login/LOG_OUT';
@@ -32,7 +32,7 @@ export const loginAction = (payload) => async (dispatch) => {
     dispatch(loginPending());
 
     const response = await axios.post(
-      'http://localhost:8000/users/login',
+      'http://52.78.149.75:8080/users/login',
       payload,
       {
         headers: {
@@ -40,10 +40,9 @@ export const loginAction = (payload) => async (dispatch) => {
         },
       },
     );
+    console.log(response);
 
-    const user = {
-      token: response.headers.authorization,
-    };
+    const user = payload.email;
 
     addLocalStorage(user);
     dispatch(loginFulfilled(user));
@@ -56,7 +55,7 @@ export const loginAction = (payload) => async (dispatch) => {
 export const logoutAction = () => async (dispatch) => {
   try {
     // 로그아웃 시 로컬 스토리지에서 사용자 정보 삭제
-    removeLocalStroage();
+    removeLocalStorage();
     dispatch(logOut()); // logOut 액션 디스패치
   } catch (error) {
     console.error('Logout failed:', error);

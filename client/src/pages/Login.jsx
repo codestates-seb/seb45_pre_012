@@ -4,12 +4,11 @@ import LoginForm from '../components/LoginForm.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SocialLogin from '../components/SocialLogin.jsx';
 import BaseHeader from '../components/BaseHeader.jsx';
-
-import { useSelector } from 'react-redux';
+import { getLocalStorage } from '../redux/localStorage.jsx';
 
 const Login = () => {
-  const user = useSelector((state) => state.login.user);
-
+  const user = getLocalStorage();
+  console.log(user);
   return (
     <>
       {user !== null ? (

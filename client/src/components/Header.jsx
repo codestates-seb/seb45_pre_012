@@ -10,6 +10,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import './Header.css';
 import { useState, useRef, useEffect } from 'react';
 import SideMenu from './SideMenu.jsx';
+import { useDispatch } from 'react-redux';
+import { logoutAction } from '../redux/actions.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function ProductModal(props) {
   // eslint-disable-next-line prettier/prettier
@@ -211,6 +214,13 @@ function Header(props) {
       // 검색한 내용 서버로 보내는 함수 필요
     }
   }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logoutBtnClick = () => {
+    console.log('logout');
+    dispatch(logoutAction());
+    navigate('/login');
+  };
 
   return (
     <Nav className="header_container">
@@ -309,7 +319,7 @@ function Header(props) {
         ) : null}
       </Button>
       {/*  로그아웃 구현 필요 (+모달) */}
-      <Button className="" variant="light">
+      <Button className="" variant="light" onClick={logoutBtnClick}>
         {/* 로그아웃 페이지가 아니라.. 모달 구현이라 Nav.Link 태그는 주석 처리 했습니다.! */}
         {/* <Nav.Link href="/logout"> */}
         <span className="material-symbols-outlined">logout</span>{' '}

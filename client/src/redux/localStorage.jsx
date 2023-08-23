@@ -6,6 +6,6 @@ export const addLocalStorage = (payload) => {
   return localStorage.setItem('user', JSON.stringify(payload));
 };
 
-export const removeLocalStroage = () => {
+export const removeLocalStorage = () => {
   return localStorage.removeItem('user');
 };

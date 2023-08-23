@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './LoginForm.css';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../redux/actions.jsx';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const LoginForm = () => {
@@ -14,8 +15,9 @@ const LoginForm = () => {
   const [invalidPassword, setInvalidPassword] = useState(false);
   const [loginFailed] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleLogin = (email, password) => {
+  const handleLogin = async (email, password) => {
     const emailRegex =
       /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     const passwordRegex = /^[A-Za-z\d!@#$%^&*()_+~\-=]{8,40}$/;
@@ -38,8 +40,14 @@ const LoginForm = () => {
       setEmptyPassword(false);
       setInvalidEmail(true);
       setInvalidPassword(true);
-      dispatch(loginAction({ email, password }));
-      console.log('로그인 완료');
+      try {
+        // 로그인 액션 디스패치
+        await dispatch(loginAction({ email, password }));
+        // 로그인이 성공하면 원하는 페이지로 이동
+        navigate('/'); // 원하는 경로로 수정
+      } catch (error) {
+        navigate('/login');
+      }
     }
   };
 
